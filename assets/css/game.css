@@ -1,0 +1,14 @@
+/* /GameCouponHub/assets/css/game.css */
+/* 게임별 쿠폰 페이지 스타일 */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+section {
+    margin: 30px;
+}

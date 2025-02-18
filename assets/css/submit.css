@@ -1,0 +1,31 @@
+/* /GameCouponHub/assets/css/submit.css */
+/* 쿠폰 제보 페이지 스타일 */
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
