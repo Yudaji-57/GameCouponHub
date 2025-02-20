@@ -14,7 +14,7 @@
         <h2>광고</h2>
         <div class="ad">
             <!-- 광고 배너 (이미지 등) -->
-            <img src="/assets/images/ad1.jpg" alt="광고 1">
+            <img src="../assets/images/ad1.jpg" alt="광고 1">
         </div>
     </section>
 </aside>

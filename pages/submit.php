@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameCouponHub - 쿠폰 제보</title>
-    <link rel="stylesheet" href="/assets/css/submit.css"> <!-- submit.css: 쿠폰 제보 스타일 -->
-    <script src="/assets/js/submit.js" defer></script> <!-- submit.js: 쿠폰 제보 JS -->
+    <link rel="stylesheet" href="../assets/css/submit.css"> <!-- submit.css: 쿠폰 제보 스타일 -->
+    <script src="../assets/js/submit.js" defer></script> <!-- submit.js: 쿠폰 제보 JS -->
 </head>
 <body>
     <!-- Header include -->

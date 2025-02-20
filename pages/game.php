@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameCouponHub - 게임별 쿠폰</title>
-    <link rel="stylesheet" href="/assets/css/game.css"> <!-- game.css: 게임별 스타일 -->
-    <script src="/assets/js/game.js" defer></script> <!-- game.js: 게임별 쿠폰 JS -->
+    <link rel="stylesheet" href="../assets/css/game.css"> <!-- game.css: 게임별 스타일 -->
+    <script src="../assets/js/game.js" defer></script> <!-- game.js: 게임별 쿠폰 JS -->
 </head>
 <body>
     <!-- Header include -->

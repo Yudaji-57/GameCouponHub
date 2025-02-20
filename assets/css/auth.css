@@ -1,0 +1,73 @@
+/* /assets/css/auth.css */
+/* 로그인 페이지 스타일 */
+.login-container {
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.login-links {
+    margin-top: 10px;
+}
+
+.social-login {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* 원형 소셜 로그인 버튼 */
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* 카카오 로그인 버튼 */
+.kakao {
+    background-color: #fee500;
+    color: #3c1e1e;
+}
+
+/* 구글 로그인 버튼 */
+.google {
+    background-color: #db4437;
+    color: white;
+}
+
+/* 버튼 호버 효과 */
+.social-btn:hover {
+    transform: scale(1.1);
+}
