@@ -1,4 +1,4 @@
-<!-- /auth/login.html -->
+<!-- /auth/login.php -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,12 +8,17 @@
     
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/assets/css/auth.css">
+    <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
+    <link rel="stylesheet" href="../assets/css/auth.css">
 </head>
 <body>
-    <!-- 헤더 포함 -->
-    <!--#include virtual="/includes/header.html"-->
+<?php
+    $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
+
+    // 헤더
+    include $rootPath . "/includes/header.php";
+    ?>
+
 
     <div class="login-container">
         <h2>로그인</h2>
@@ -30,8 +35,8 @@
         </form>
 
         <div class="login-links">
-            <a href="/auth/register.html">회원가입</a> |
-            <a href="/auth/forgot_password.html">비밀번호 찾기</a>
+            <a href="/auth/register.php">회원가입</a> |
+            <a href="/auth/forgot_password.php">비밀번호 찾기</a>
         </div>
 
         <div class="social-login">
@@ -46,7 +51,7 @@
     </div>
 
     <!-- 푸터 포함 -->
-    <!--#include virtual="/includes/footer.html"-->
+    <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>
     
     <script src="/assets/js/auth.js"></script>
 </body>

@@ -1,4 +1,4 @@
-<!-- /GameCouponHub/includes/sidebar.html -->
+<!-- /GameCouponHub/includes/sidebar.php -->
 <aside class="sidebar">
     <section class="category">
         <h2>카테고리</h2>

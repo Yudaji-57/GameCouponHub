@@ -17,15 +17,21 @@ body {
 
 /* 헤더 스타일 */
 header {
-    background-color: #2c3e50;
+    background-color: #3498db;  /* 배경색을 좀 더 밝고 눈에 띄는 색으로 */
     color: #fff;
-    padding: 20px 0;
+    padding: 30px 0;  /* 더 많은 패딩을 추가하여 크기를 키움 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 살짝 그림자 추가 */
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+header h1 {
+    font-size: 32px; /* 헤더 제목의 폰트 크기를 더 크게 */
+    margin: 0;
 }
 
 header nav ul {
@@ -41,6 +47,11 @@ header nav ul li {
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-size: 18px; /* 링크의 폰트 크기를 약간 키움 */
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
 }
 
 /* 사이드바 스타일 */
