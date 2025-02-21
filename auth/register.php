@@ -1,10 +1,10 @@
-<!-- /auth/login.php -->
+<!-- /auth/register.php -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 - GameCouponHub</title>
+    <title>회원가입 - GameCouponHub</title>
     
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
             <div class="card p-4">
-                <h2 class="text-center mb-4">로그인</h2>
+                <h2 class="text-center mb-4">회원가입</h2>
 
                 <!-- 오류 메시지 출력 영역 -->
                 <?php
@@ -36,31 +36,32 @@
                 }
                 ?>
 
-                <form action="../auth/process_login.php" method="post">
+                <form action="../auth/process_register.php" method="post">
                     <div class="mb-3">
                         <label for="username" class="form-label">아이디</label>
                         <input type="text" id="username" name="username" class="form-control" required>
                     </div>
                     <div class="mb-3">
+                        <label for="nickname" class="form-label">닉네임</label>
+                        <input type="text" id="nickname" name="nickname" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">이메일</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="password" class="form-label">비밀번호</label>
                         <input type="password" id="password" name="password" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">로그인</button>
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">비밀번호 확인</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">회원가입</button>
                 </form>
 
                 <div class="text-center mt-3">
-                    <a href="../auth/register.php">회원가입</a> |
-                    <a href="../auth/forgot_password.php">비밀번호 찾기</a>
-                </div>
-
-                <div class="social-login mt-4 text-center">
-                    <p>소셜 로그인</p>
-                    <button class="btn btn-outline-warning mx-2">
-                        <i class="fas fa-comment"></i> 카카오
-                    </button>
-                    <button class="btn btn-outline-danger mx-2">
-                        <i class="fab fa-google"></i> 구글
-                    </button>
+                    <a href="../auth/login.php">로그인</a>
                 </div>
             </div>
         </div>

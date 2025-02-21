@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
     <link rel="stylesheet" href="../assets/css/game.css"> <!-- game.css: 게임별 스타일 -->
+    
     <script src="../assets/js/game.js" defer></script> <!-- game.js: 게임별 쿠폰 JS -->
 </head>
 

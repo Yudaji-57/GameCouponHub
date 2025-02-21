@@ -24,16 +24,36 @@ ul {
 
 ul li {
     background-color: #fff;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+ul li:hover {
+    background-color: #e9f5ff;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+/* 쿠폰 아이콘 추가 */
+ul li::before {
+    content: '\f02c'; /* 폰트어썸 태그 아이콘 (fa-ticket) */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    color: #3498db;
+}
+
+/* 쿠폰 리스트 링크 스타일 */
 ul li a {
     text-decoration: none;
     color: #3498db;
     font-weight: bold;
+    flex-grow: 1;
 }
 
 ul li a:hover {
@@ -54,4 +74,16 @@ ul li a:hover {
 .col-md-4 {
     width: 100%;
     max-width: 350px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    ul li {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    ul li::before {
+        font-size: 16px;
+    }
 }

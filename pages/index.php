@@ -47,16 +47,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 
-<!-- /GameCouponHub/index.php (혹은 footer.php에 추가 가능) -->
+</html>
+
+<!-- /GameCouponHub/index.php (또는 footer.php에 추가) -->
 <script>
     document.getElementById('sidebar-toggle').addEventListener('click', function () {
         var sidebar = document.getElementById('sidebar');
         var icon = document.getElementById('toggle-icon');
 
-        // 사이드바에 'collapsed' 클래스 추가/제거
+        // 'collapsed' 클래스를 추가/제거
         sidebar.classList.toggle('collapsed');
 
-        // 아이콘 변경 (접기/펼치기 아이콘 변경)
+        // 아이콘 변경
         if (sidebar.classList.contains('collapsed')) {
             icon.classList.remove('fa-chevron-left');
             icon.classList.add('fa-chevron-right');  // '펼치기' 아이콘
@@ -66,5 +68,3 @@
         }
     });
 </script>
-
-</html>
