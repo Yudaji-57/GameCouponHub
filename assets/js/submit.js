@@ -40,15 +40,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!response.ok) {
                 throw new Error("서버 오류: " + response.statusText);
             }
-            return response.json();
+            return response.text(); // 응답을 텍스트로 받아오기
         })
-        .then(data => {
-            if (data.success) {
-                resultMessage.textContent = "쿠폰이 성공적으로 제보되었습니다!";
-                resultMessage.style.color = "green";
-                formElement.reset(); // 폼 리셋
-            } else {
-                resultMessage.textContent = "오류 발생: " + data.message;
+        .then(text => {
+            try {
+                const data = JSON.parse(text); // 텍스트를 JSON으로 파싱
+                if (data.success) {
+                    resultMessage.textContent = "쿠폰이 성공적으로 제보되었습니다!";
+                    resultMessage.style.color = "green";
+                    formElement.reset(); // 폼 리셋
+                } else {
+                    resultMessage.textContent = "오류 발생: " + data.message;
+                    resultMessage.style.color = "red";
+                }
+            } catch (error) {
+                console.error("응답을 JSON으로 파싱할 수 없습니다:", error);
+                resultMessage.textContent = "서버 응답 오류: JSON 파싱 실패";
                 resultMessage.style.color = "red";
             }
         })

@@ -5,6 +5,9 @@ ini_set('display_errors', 0);
 
 header('Content-Type: application/json'); // JSON 응답을 반환한다고 명시
 
+// 데이터베이스 연결 파일 포함
+require_once '../config/database.php'; // database.php 파일 경로를 맞춰 주세요
+
 // 입력값 받기
 $game = $_POST['game'] ?? '';
 $coupon = $_POST['coupon'] ?? '';
@@ -20,13 +23,6 @@ if (empty($game) || empty($coupon) || empty($reward) || empty($user_id)) {
     exit();
 }
 
-// 데이터베이스 연결 (예시)
-$mysqli = new mysqli("localhost", "username", "password", "database_name");
-
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
-
 // 현재 시간 (created_at)
 $created_at = date('Y-m-d H:i:s');
 
@@ -34,22 +30,32 @@ $created_at = date('Y-m-d H:i:s');
 $query = "INSERT INTO coupon_submissions (user_id, game_name, coupon_code, reward_details, created_at) 
           VALUES (?, ?, ?, ?, ?)";
 $stmt = $mysqli->prepare($query);
-$stmt->bind_param("issss", $user_id, $game, $coupon, $reward, $created_at);
-$stmt->execute();
 
-// 성공 여부 확인
-if ($stmt->affected_rows > 0) {
-    echo json_encode([
-        'success' => true,
-        'message' => '쿠폰이 성공적으로 제보되었습니다!'
-    ]);
+// 유효한 파라미터 바인딩
+if ($stmt) {
+    $stmt->bind_param("issss", $user_id, $game, $coupon, $reward, $created_at);
+    $stmt->execute();
+
+    // 성공 여부 확인
+    if ($stmt->affected_rows > 0) {
+        echo json_encode([
+            'success' => true,
+            'message' => '쿠폰이 성공적으로 제보되었습니다!'
+        ]);
+    } else {
+        echo json_encode([
+            'success' => false,
+            'message' => '제보 처리에 실패했습니다.'
+        ]);
+    }
+
+    $stmt->close();
 } else {
     echo json_encode([
         'success' => false,
-        'message' => '제보 처리에 실패했습니다.'
+        'message' => '쿼리 준비 중 오류가 발생했습니다.'
     ]);
 }
 
-$stmt->close();
 $mysqli->close();
 ?>
