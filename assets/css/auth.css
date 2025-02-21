@@ -1,8 +1,14 @@
 /* /assets/css/auth.css */
 /* 로그인 페이지 스타일 */
+
 .login-container {
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     text-align: center;
 }
 
@@ -13,12 +19,15 @@
 .input-group label {
     display: block;
     font-weight: bold;
+    text-align: left;
 }
 
 .input-group input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .login-btn {
@@ -27,18 +36,32 @@
     background-color: #007bff;
     color: #fff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
 .login-links {
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.login-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
 }
 
 .social-login {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 /* 원형 소셜 로그인 버튼 */
@@ -70,4 +93,16 @@
 /* 버튼 호버 효과 */
 .social-btn:hover {
     transform: scale(1.1);
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .social-login {
+        gap: 10px;
+    }
 }

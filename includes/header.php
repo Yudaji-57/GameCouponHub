@@ -1,15 +1,19 @@
 <!-- /GameCouponHub/includes/header.php -->
-<header>
+<header class="bg-dark text-white py-3 coupons-header">
     <div class="container">
-        <h1><a href="../pages/index.php">GameCouponHub</a></h1> <!-- 사이트 이름을 클릭하면 메인 페이지로 이동 -->
-        <nav>
-            <ul>
-                <li><a href="../pages/index.php">홈</a></li>
-                <li><a href="../pages/coupons.php">쿠폰 리스트</a></li>
-                <li><a href="../pages/game.php">게임별 쿠폰</a></li>
-                <li><a href="../pages/submit.php">쿠폰 제보</a></li>
-                <li><a href="../auth/login.php">로그인</a></li>
-            </ul>
-        </nav>
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="h3 mb-0">
+                <a href="../pages/index.php" class="text-white text-decoration-none">GameCouponHub</a>
+            </h1>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a href="../pages/index.php" class="nav-link text-white">홈</a></li>
+                    <li class="nav-item"><a href="../pages/coupons.php" class="nav-link text-white">쿠폰 리스트</a></li>
+                    <li class="nav-item"><a href="../pages/game.php" class="nav-link text-white">게임별 쿠폰</a></li>
+                    <li class="nav-item"><a href="../pages/submit.php" class="nav-link text-white">쿠폰 제보</a></li>
+                    <li class="nav-item"><a href="../auth/login.php" class="nav-link text-white">로그인</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </header>

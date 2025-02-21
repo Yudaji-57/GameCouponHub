@@ -1,14 +1,57 @@
 /* /GameCouponHub/assets/css/main.css */
 /* 메인 페이지 및 쿠폰 리스트 스타일 */
 
+/* 부트스트랩을 적용한 공통 스타일 */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
 }
 
 h1 {
     color: #333;
 }
 
+/* 메인 콘텐츠 섹션 스타일 */
 section {
     margin: 20px;
+}
+
+/* 쿠폰 리스트 스타일 */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* 부트스트랩 컬럼을 활용한 레이아웃 */
+.container {
+    max-width: 1200px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.col-md-4 {
+    width: 100%;
+    max-width: 350px;
 }

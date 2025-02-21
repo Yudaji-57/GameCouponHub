@@ -3,54 +3,55 @@
 
 /* 기본 폰트 및 레이아웃 설정 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: #f8f8f8;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
 /* 헤더 스타일 */
-header {
-    background-color: #3498db;  /* 배경색을 좀 더 밝고 눈에 띄는 색으로 */
+header.coupons-header {
+    background-color: #3498db;  /* 배경색을 더 눈에 띄는 색으로 */
     color: #fff;
     padding: 30px 0;  /* 더 많은 패딩을 추가하여 크기를 키움 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 살짝 그림자 추가 */
 }
 
-header .container {
+header.coupons-header .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;  /* 양쪽 끝으로 정렬 */
     align-items: center;
 }
 
-header h1 {
+header.coupons-header h1 {
     font-size: 32px; /* 헤더 제목의 폰트 크기를 더 크게 */
+    margin: 0;
+    text-align: left;  /* 왼쪽 정렬 */
+}
+
+header.coupons-header nav {
+    text-align: right;  /* 네비게이션을 오른쪽으로 정렬 */
+}
+
+header.coupons-header nav ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-header nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-header nav ul li {
+header.coupons-header nav ul li {
     display: inline;
-    margin-right: 20px;
+    margin-left: 20px;  /* 오른쪽으로 간격을 설정 */
 }
 
-header nav ul li a {
+header.coupons-header nav ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 18px; /* 링크의 폰트 크기를 약간 키움 */
 }
 
-header nav ul li a:hover {
+header.coupons-header nav ul li a:hover {
     text-decoration: underline;
 }
 
@@ -63,6 +64,9 @@ header nav ul li a:hover {
     top: 100px;
     left: 0;
     bottom: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 사이드바에 그림자 추가 */
+    transition: width 0.3s ease;
+    overflow: hidden;    
 }
 
 .sidebar .category h2, .sidebar .ads h2 {
@@ -72,6 +76,7 @@ header nav ul li a:hover {
 .sidebar .category ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .sidebar .category ul li {
@@ -87,6 +92,35 @@ header nav ul li a:hover {
 .sidebar .ads .ad img {
     width: 100%;
     height: auto;
+    border-radius: 8px;
+}
+
+/* 접었을 때 사이드바 너비 축소 */
+.sidebar.collapsed {
+    width: 50px; /* 숨겨진 상태의 사이드바 너비 */
+}
+
+/* 사이드바 접었을 때 카테고리와 광고 글자 숨기기 */
+.sidebar.collapsed .category h2, .sidebar.collapsed .ads h2 {
+    display: none;
+}
+
+.sidebar.collapsed .category ul, .sidebar.collapsed .ads img {
+    display: none;
+}
+
+.sidebar .category, .sidebar .ads {
+    display: none; /* 사이드바가 접히면 카테고리와 광고 섹션 숨김 */
+}
+
+/* 숨겨진 상태에서 버튼을 보이도록 */
+.sidebar.collapsed .category, .sidebar.collapsed .ads {
+    display: block;
+}
+
+/* 접은 상태에서 버튼 아이콘 */
+.sidebar.collapsed #toggle-icon {
+    transform: rotate(180deg); /* 아이콘을 반전시켜서 '펼치기' 아이콘으로 변경 */
 }
 
 /* 푸터 스타일 */
@@ -103,6 +137,7 @@ footer {
 footer nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 footer nav ul li {
@@ -113,6 +148,10 @@ footer nav ul li {
 footer nav ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+footer nav ul li a:hover {
+    text-decoration: underline;
 }
 
 /* 추가적인 공통 스타일 */
@@ -139,8 +178,34 @@ button {
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 button:hover {
     background-color: #2980b9;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        top: 80px;
+    }
+
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header nav ul li {
+        margin-right: 10px;
+    }
+
+    footer {
+        padding: 15px;
+    }
 }

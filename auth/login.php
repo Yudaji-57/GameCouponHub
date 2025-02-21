@@ -8,6 +8,8 @@
     
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- 부트스트랩 CSS 링크 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
     <link rel="stylesheet" href="../assets/css/auth.css">
 </head>
@@ -19,40 +21,50 @@
     include $rootPath . "/includes/header.php";
     ?>
 
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-4">
+                    <h2 class="text-center mb-4">로그인</h2>
+                    <form action="/auth/process_login.php" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">아이디</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">비밀번호</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">로그인</button>
+                    </form>
 
-    <div class="login-container">
-        <h2>로그인</h2>
-        <form action="/auth/process_login.php" method="post">
-            <div class="input-group">
-                <label for="username">아이디</label>
-                <input type="text" id="username" name="username" required>
+                    <div class="text-center mt-3">
+                        <a href="/auth/register.php">회원가입</a> |
+                        <a href="/auth/forgot_password.php">비밀번호 찾기</a>
+                    </div>
+
+                    <div class="social-login mt-4 text-center">
+                        <p>소셜 로그인</p>
+                        <button class="btn btn-outline-warning mx-2">
+                            <i class="fas fa-comment"></i> 카카오
+                        </button>
+                        <button class="btn btn-outline-danger mx-2">
+                            <i class="fab fa-google"></i> 구글
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="input-group">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="login-btn">로그인</button>
-        </form>
-
-        <div class="login-links">
-            <a href="/auth/register.php">회원가입</a> |
-            <a href="/auth/forgot_password.php">비밀번호 찾기</a>
-        </div>
-
-        <div class="social-login">
-            <p>소셜 로그인</p>
-            <button class="social-btn kakao">
-                <i class="fas fa-comment"></i> <!-- 카카오 아이콘 대체 -->
-            </button>
-            <button class="social-btn google">
-                <i class="fab fa-google"></i> <!-- 구글 아이콘 -->
-            </button>
         </div>
     </div>
 
     <!-- 푸터 포함 -->
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>
-    
+    <?php 
+    include $rootPath . "/includes/footer.php";
+    ?>
+
+    <!-- 부트스트랩 JS, Popper.js 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="/assets/js/auth.js"></script>
 </body>
 </html>

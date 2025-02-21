@@ -3,48 +3,29 @@
 
 /* 배경 색상과 페이지 여백 설정 */
 body {
-    font-family: 'Noto Sans KR', sans-serif;
     background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* 메인 콘텐츠 여백 추가 */
 main {
     margin-top: 80px; /* 헤더와의 간격 조정 */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-/* 컨테이너 박스 스타일 */
-form {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px;
-    text-align: center;
-    margin-top: 20px;
-    transition: 0.3s ease-in-out;
-}
-
-form:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* 제목 스타일 */
 h1 {
     text-align: center;
     color: #333;
-    font-size: 28px; /* 제목 크기 키움 */
+    font-size: 24px;
     margin-bottom: 20px;
-    font-weight: 600;
+}
+
+/* 폼 스타일 */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 입력 필드 스타일 */
@@ -58,24 +39,24 @@ label {
 
 input {
     width: 100%;
-    padding: 14px;
-    margin-bottom: 20px; /* 더 여백을 줘서 공백 조정 */
+    padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s;
 }
 
 input:focus {
     border-color: #3498db;
     outline: none;
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
 /* 버튼 스타일 */
 button {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     background: linear-gradient(135deg, #3498db, #2980b9);
     color: white;
     border: none;
@@ -83,33 +64,23 @@ button {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    transition: 0.3s;
 }
 
 button:hover {
     background: linear-gradient(135deg, #2980b9, #1c6ea4);
     transform: scale(1.05);
-    box-shadow: 0 0 12px rgba(52, 152, 219, 0.7); /* 버튼에 그림자 추가 */
 }
 
 /* 결과 메시지 스타일 */
 #resultMessage {
-    margin-top: 20px;
+    margin-top: 15px;
     font-size: 16px;
     font-weight: bold;
-    color: #333;
 }
 
 /* 모바일 반응형 */
 @media screen and (max-width: 768px) {
-    form {
-        padding: 25px;
-        max-width: 90%; /* 화면 크기에 맞게 폼의 최대 너비를 설정 */
-    }
-
-    h1 {
-        font-size: 24px; /* 모바일에서는 조금 작은 제목 */
-    }
     .container {
         width: 90%;
     }
