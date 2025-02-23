@@ -1,0 +1,23 @@
+/* 사용자 관리 페이지 스타일 */
+
+/* 사용자 테이블 */
+#userTable th, #userTable td {
+    text-align: center;
+}
+
+/* 테이블 행에 호버 스타일 */
+#userTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* 사용자 관리 버튼 */
+.manage-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.manage-btn:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}

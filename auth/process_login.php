@@ -8,13 +8,13 @@ require_once "/volume1/web/GameCouponHub/backend/config/database.php"; // 올바
 // POST 요청이 들어왔을 때
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 입력 받은 아이디와 비밀번호
-    $username = $_POST['username'];
+    $userId = $_POST['userId']; // user_id로 변경
     $password = $_POST['password'];
 
     // SQL 쿼리로 사용자의 아이디와 비밀번호를 확인
-    $sql = "SELECT * FROM users WHERE user_id = :username";
+    $sql = "SELECT * FROM users WHERE user_id = :userId"; // user_id로 변경
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':userId', $userId); // user_id로 변경
     $stmt->execute();
 
     // 사용자 존재 여부 확인
@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // 로그인 시간을 업데이트
-            $updateSql = "UPDATE users SET last_login = NOW() WHERE user_id = :username";
+            $updateSql = "UPDATE users SET last_login = NOW() WHERE user_id = :userId"; // user_id로 변경
             $updateStmt = $pdo->prepare($updateSql);
-            $updateStmt->bindParam(':username', $username);
+            $updateStmt->bindParam(':userId', $userId); // user_id로 변경
             $updateStmt->execute();
 
             // 로그인 성공 후 리다이렉트

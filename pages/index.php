@@ -68,3 +68,18 @@
         }
     });
 </script>
+
+<?php
+session_start(); // 세션 시작
+
+// 로그인 상태 확인
+if (isset($_SESSION['user_id'])) {
+    // user_id 세션 값이 있을 경우, JavaScript로 전달
+    echo "<script>
+        sessionStorage.setItem('user_id', '" . $_SESSION['user_id'] . "');
+        console.log('로그인된 user_id:', sessionStorage.getItem('user_id'));
+    </script>";
+} else {
+    echo "<script>console.log('로그인되지 않았습니다.');</script>";
+}
+?>

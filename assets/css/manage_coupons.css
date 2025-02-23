@@ -1,0 +1,19 @@
+/* 쿠폰 관리 페이지 스타일 */
+
+/* 쿠폰 코드 및 보상 내용 */
+#couponTable td {
+    font-size: 14px;
+    padding: 10px;
+}
+
+/* 쿠폰 관리 버튼 */
+.coupon-btn {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #fff;
+}
+
+.coupon-btn:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}

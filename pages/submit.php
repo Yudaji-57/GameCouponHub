@@ -1,3 +1,4 @@
+<!-- pages/submit.php -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -23,7 +24,7 @@
         <section class="col-md-6 mx-auto">
             <h1 class="text-center mb-4">쿠폰 제보</h1>
             <!-- 쿠폰 제보 폼 (form) 수정 -->
-            <form id="couponForm" method="POST" action="../backend/routes/submit_coupon.php">
+            <form id="couponForm">
                 <!-- 게임명 입력 -->
                 <div class="form-group">
                     <label for="game">게임명:</label>
@@ -44,14 +45,14 @@
 
                 <!-- 숨겨진 user_id 입력 -->
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                    <input type="hidden" id="user_id" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <?php endif; ?>
 
                 <button type="submit" class="btn btn-primary btn-block">제보하기</button>
             </form>
 
+            <div id="resultMessage" class="mt-3"></div> <!-- 결과 메시지 표시 -->
 
-            <p id="resultMessage" class="mt-3"></p> <!-- 결과 메시지 표시 -->
         </section>
     </main>
 

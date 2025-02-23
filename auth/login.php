@@ -38,8 +38,8 @@
 
                 <form action="../auth/process_login.php" method="post">
                     <div class="mb-3">
-                        <label for="username" class="form-label">아이디</label>
-                        <input type="text" id="username" name="username" class="form-control" required>
+                        <label for="userId" class="form-label">아이디</label>
+                        <input type="text" id="userId" name="userId" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">비밀번호</label>

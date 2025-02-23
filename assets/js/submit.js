@@ -1,68 +1,58 @@
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("쿠폰 제보 페이지 JS 로드됨");
+let formElement = document.getElementById("couponForm"); // couponForm으로 변경
+let resultMessage = document.getElementById("resultMessage");
 
-    let formElement = document.getElementById("couponForm");
-    if (!formElement) {
-        console.error("Error: 'couponForm' 요소를 찾을 수 없습니다.");
+formElement.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // 입력 값 가져오기
+    let game = document.getElementById("game").value.trim();
+    let coupon = document.getElementById("coupon").value.trim();
+    let reward = document.getElementById("reward").value.trim();
+    let user_id = document.getElementById("user_id") ? document.getElementById("user_id").value.trim() : ''; // user_id도 가져오기
+
+    // 유효성 검사
+    if (game === "" || coupon === "" || reward === "") {
+        resultMessage.textContent = "게임명, 쿠폰 코드, 보상 내용을 모두 입력해주세요.";
+        resultMessage.style.color = "red";
         return;
     }
 
-    formElement.addEventListener("submit", function(event) {
-        event.preventDefault(); // 기본 제출 방지
+    // 데이터 전송 (AJAX)
+    let formData = new FormData();
+    formData.append("game", game);
+    formData.append("coupon", coupon);
+    formData.append("reward", reward);
+    formData.append("user_id", user_id); // user_id도 추가
 
-        let game = document.getElementById("game").value.trim();
-        let coupon = document.getElementById("coupon").value.trim();
-        let reward = document.getElementById("reward").value.trim();
-        let resultMessage = document.getElementById("resultMessage");
+    fetch("/backend/routes/submit_coupon.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            resultMessage.textContent = "쿠폰이 성공적으로 제보되었습니다! 5초 후 이동합니다.";
+            resultMessage.style.color = "green";
 
-        // user_id 추가 (예: 로그인된 사용자의 ID)
-        let user_id = "example_user_id"; // 로그인된 사용자 ID를 동적으로 설정해야 합니다.
+            // 5초 동안 카운트다운
+            let countdown = 5;
+            let countdownInterval = setInterval(function () {
+                resultMessage.textContent = "쿠폰이 성공적으로 제보되었습니다! " + countdown + "초 후 이동합니다.";
+                countdown--;
 
-        // 입력값 유효성 검사
-        if (game === "" || coupon === "" || reward === "" || user_id === "") {
-            resultMessage.textContent = "게임명, 쿠폰 코드, 보상 내용, 사용자 ID를 모두 입력해주세요.";
-            resultMessage.style.color = "red";
-            return;
-        }
-
-        // 데이터 전송 (AJAX)
-        let formData = new FormData();
-        formData.append("game", game);
-        formData.append("coupon", coupon);
-        formData.append("reward", reward);
-        formData.append("user_id", user_id); // user_id 추가
-
-        fetch("/backend/routes/submit_coupon.php", { // 백엔드 경로 수정
-            method: "POST",
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("서버 오류: " + response.statusText);
-            }
-            return response.text(); // 응답을 텍스트로 받아오기
-        })
-        .then(text => {
-            try {
-                const data = JSON.parse(text); // 텍스트를 JSON으로 파싱
-                if (data.success) {
-                    resultMessage.textContent = "쿠폰이 성공적으로 제보되었습니다!";
-                    resultMessage.style.color = "green";
-                    formElement.reset(); // 폼 리셋
-                } else {
-                    resultMessage.textContent = "오류 발생: " + data.message;
-                    resultMessage.style.color = "red";
+                // 카운트다운이 0일 때 리디렉션
+                if (countdown < 0) {
+                    clearInterval(countdownInterval); // 카운트다운 중지
+                    window.location.href = data.redirect; // index.php로 리디렉션
                 }
-            } catch (error) {
-                console.error("응답을 JSON으로 파싱할 수 없습니다:", error);
-                resultMessage.textContent = "서버 응답 오류: JSON 파싱 실패";
-                resultMessage.style.color = "red";
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            resultMessage.textContent = "서버 오류가 발생했습니다.";
+            }, 1000); // 1초마다 업데이트
+        } else {
+            resultMessage.textContent = "오류 발생: " + data.message;
             resultMessage.style.color = "red";
-        });
+        }
+    })
+    .catch(error => {
+        resultMessage.textContent = "서버 오류가 발생했습니다.";
+        resultMessage.style.color = "red";
     });
 });

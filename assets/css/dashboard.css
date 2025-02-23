@@ -1,0 +1,21 @@
+/* 관리자 대시보드 스타일 */
+
+/* 대시보드 카드 스타일 */
+.dashboard-card {
+    border: 1px solid #007bff;
+    background-color: #e9f7ff;
+    color: #007bff;
+}
+
+.dashboard-card h5 {
+    font-size: 1.2em;
+}
+
+.dashboard-card p {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.dashboard-card .card-body {
+    padding: 20px;
+}
