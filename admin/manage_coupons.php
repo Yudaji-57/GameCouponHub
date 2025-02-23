@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../assets/css/admin_common.css">
     <!-- 쿠폰 관리 페이지 CSS -->
     <link rel="stylesheet" href="../assets/css/manage_coupons.css">
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,9 +40,12 @@
             <table class="table" id="couponTable">
                 <thead>
                     <tr>
-                        <th>쿠폰 코드</th>
                         <th>게임명</th>
+                        <th>쿠폰 코드</th>                        
                         <th>보상 내용</th>
+                        <th>발급일</th>
+                        <th>만료일</th>
+                        <th>쿠폰 생성일</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,8 +56,10 @@
                 쿠폰 데이터가 없습니다.
             </div>
         </div>
+    </div>
 
-        <script src="../assets/js/manage_coupons.js"></script>
+    <!-- JavaScript 파일이 한 번만 포함되도록 수정 -->
+    <script src="../assets/js/manage_coupons.js"></script>
 </body>
 
 </html>

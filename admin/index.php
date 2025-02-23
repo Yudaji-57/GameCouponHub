@@ -72,6 +72,7 @@
                 </div>
             </div>
 
+
             <!-- 쿠폰 제보 리스트 테이블 -->
             <h4>최근 쿠폰 제보 리스트</h4>
             <table id="couponTable" class="table">
@@ -101,43 +102,44 @@
 
     <script src="../assets/js/dashboard.js"></script>
     <script>
-        // 대시보드 데이터 업데이트 (예시)
-        fetch('/backend/admin/dashboard_data.php')
-            .then(response => response.json())
-            .then(data => {
-                // 대시보드 지표 데이터
-                document.getElementById('totalUsers').innerText = `${data.totalUsers}명`;
-                document.getElementById('totalReports').innerText = `${data.totalReports}개`;
-                document.getElementById('totalCoupons').innerText = `${data.totalCoupons}개`;
-                document.getElementById('todayReports').innerText = `${data.todayReports}개`;
+        fetch('/backend/admin/dashboard_data.php') // 대시보드 데이터를 불러오는 API 호출
+    .then(response => response.json())  // 응답을 JSON으로 받기
+    .then(data => {
+        console.log(data);  // 응답 내용 로그
 
-                // 월별 쿠폰 제보 통계 차트
-                const ctx = document.getElementById('reportChart').getContext('2d');
-                const reportChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: data.months,
-                        datasets: [{
-                            label: '월별 제보 수',
-                            data: data.monthlyReports,
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
+        // 대시보드 지표 업데이트
+        document.getElementById('totalUsers').innerText = `${data.totalUsers}명`;
+        document.getElementById('totalReports').innerText = `${data.totalReports}개`;
+        document.getElementById('totalCoupons').innerText = `${data.totalCoupons}개`;
+        document.getElementById('todayReports').innerText = `${data.todayReports}개`;
+
+        // 월별 쿠폰 제보 통계 차트
+        const ctx = document.getElementById('reportChart').getContext('2d');
+        const reportChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.months, // 월별 레이블
+                datasets: [{
+                    label: '월별 제보 수',
+                    data: data.monthlyReports, // 월별 제보 수 데이터
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
-                });
-            })
-            .catch(error => {
-                console.error('대시보드 데이터 로드 실패:', error);
-            });
+                }
+            }
+        });
+    })
+    .catch(error => {
+        console.error('대시보드 데이터 로드 실패:', error);
+    });
     </script>
 </body>
 
