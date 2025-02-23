@@ -1,22 +1,75 @@
 <?php
-// /backend/admin/coupons_data.php
+// /backend/admin/dashboard_data.php
+
 require_once "/volume1/web/GameCouponHub/backend/config/database.php"; // 데이터베이스 연결
 
-header('Content-Type: application/json'); // 응답이 JSON임을 명시
+header('Content-Type: application/json');
 
-// 최근 쿠폰 제보 데이터 가져오기
 try {
-    $sql = "SELECT user_id, game_name, coupon_code, reward_details, created_at FROM coupons_report ORDER BY created_at DESC LIMIT 10"; // 최신 제보 10개
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+    // 대시보드 통계 조회
+    $statsQuery = "
+        SELECT 
+            (SELECT COUNT(*) FROM users) AS totalUsers,
+            (SELECT COUNT(*) FROM coupons_report) AS totalReports,
+            (SELECT COUNT(*) FROM coupons) AS totalCoupons,
+            (SELECT COUNT(*) FROM coupons_report WHERE DATE(created_at) = CURDATE()) AS todayReports,
+            (SELECT COUNT(*) FROM coupons_report) + (SELECT COUNT(*) FROM coupons) AS totalCouponsAndReports
+    ";
+    // PDO 실행
+    $statsResult = $pdo->query($statsQuery);
+    $stats = $statsResult->fetch(PDO::FETCH_ASSOC) ?? [
+        'totalUsers' => 0,
+        'totalReports' => 0,
+        'totalCoupons' => 0,
+        'todayReports' => 0,
+        'totalCouponsAndReports' => 0
+    ];
 
-    // 결과 가져오기
-    $reports = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // 월별 쿠폰 제보 통계 조회
+    $monthlyQuery = "
+    SELECT DATE_FORMAT(created_at, '%Y-%m') AS month, COUNT(*) AS count 
+    FROM coupons_report 
+    GROUP BY month 
+    ORDER BY month
+";
+    $monthlyResult = $pdo->query($monthlyQuery);
+    $months = [];
+    $monthlyReports = [];
+    while ($row = $monthlyResult->fetch(PDO::FETCH_ASSOC)) {
+        $months[] = $row['month'];
+        $monthlyReports[] = $row['count'];
+    }
 
-    // JSON 형식으로 응답 반환
-    echo json_encode(['reports' => $reports]);
-} catch (Exception $e) {
-    // 예외 처리: 오류 발생 시
-    echo json_encode(['error' => '데이터를 불러오는 중 오류가 발생했습니다.']);
+    // 최근 쿠폰 제보 리스트
+    $reportsQuery = "
+    SELECT user_id, game_name, coupon_code, reward_details, DATE_FORMAT(created_at, '%Y-%m-%d') AS created_at 
+    FROM coupons_report 
+    ORDER BY created_at DESC 
+    LIMIT 10
+";
+    $reportsResult = $pdo->query($reportsQuery);
+    $recentReports = [];
+    while ($row = $reportsResult->fetch(PDO::FETCH_ASSOC)) {
+        $recentReports[] = $row;
+    }
+
+    // 응답 반환
+    echo json_encode([
+        "status" => "success",
+        "totalUsers" => $stats['totalUsers'],
+        "totalReports" => $stats['totalReports'],
+        "totalCoupons" => $stats['totalCoupons'],
+        "totalCouponsAndReports" => $stats['totalCouponsAndReports'],
+        "todayReports" => $stats['todayReports'],
+        "months" => $months,
+        "monthlyReports" => $monthlyReports,
+        "recentReports" => $recentReports
+    ]);
+} catch (PDOException $e) {
+    // 예외 처리: DB 오류 시 JSON 응답 반환
+    echo json_encode([
+        "status" => "error",
+        "message" => "데이터베이스 오류: " . $e->getMessage()
+    ]);
 }
 ?>

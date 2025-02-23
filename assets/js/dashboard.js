@@ -1,32 +1,68 @@
-fetch('/backend/admin/dashboard_data.php')
-    .then(response => response.json())  // 응답을 JSON으로 받기
-    .then(data => {
-        console.log(data);  // 응답 내용 로그
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/backend/admin/dashboard_data.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                // 대시보드 통계
+                document.getElementById('totalUsers').innerText = `${data.totalUsers}명`;
+                document.getElementById('totalReports').innerText = `${data.totalReports}개`;
+                document.getElementById('totalCoupons').innerText = `${data.totalCoupons}개`;
+                document.getElementById('todayReports').innerText = `${data.todayReports}개`;
+                document.getElementById('newCoupons').innerText = `${data.newCoupons}개`; // 신규 쿠폰 수
 
-        const couponTableBody = document.querySelector("#couponTable tbody");
-        const noCouponsMessage = document.getElementById("noCouponsMessage");
+                // 총 쿠폰 수 + 제보 수 합산
+                const totalCouponsAndReports = data.totalCoupons + data.totalReports;
+                document.getElementById('totalCouponsAndReports').innerText = `${totalCouponsAndReports}개`;
 
-        // 테이블 초기화 (중복 방지)
-        couponTableBody.innerHTML = '';
+                // 최근 쿠폰 제보 리스트
+                const couponTableBody = document.querySelector('#couponTable tbody');
+                data.recentReports.forEach(report => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${report.user_id}</td>
+                        <td>${report.game_name}</td>
+                        <td>${report.coupon_code}</td>
+                        <td>${report.reward}</td>
+                        <td>${report.created_at}</td>
+                    `;
+                    couponTableBody.appendChild(row);
+                });
 
-        // 쿠폰 제보 데이터가 없으면 메시지 표시
-        if (data.reports.length === 0) {
-            noCouponsMessage.style.display = 'block';
-        } else {
-            // 쿠폰 제보가 있으면 테이블에 추가
-            data.reports.forEach(report => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${report.user_id}</td>
-                    <td>${report.coupon_code}</td>
-                    <td>${report.game_name}</td>
-                    <td>${report.reward_details}</td>
-                    <td>${report.created_at}</td>  <!-- 제보 날짜 추가 -->
-                `;
-                couponTableBody.appendChild(row);
-            });
-        }
-    })
-    .catch(error => {
-        console.error('데이터 로드 실패:', error);
-    });
+                // 월별 쿠폰 제보 통계 차트
+                const ctx = document.getElementById('reportChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.months,
+                        datasets: [{
+                            label: '월별 쿠폰 제보 수',
+                            data: data.monthlyReports,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            fill: false,
+                        }],
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                            },
+                            y: {
+                                beginAtZero: true,
+                            },
+                        },
+                    },
+                });
+            } else {
+                console.error("Error loading dashboard data:", data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+        });
+});

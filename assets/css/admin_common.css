@@ -1,197 +1,45 @@
-/* 관리자 전용 공통 CSS 파일 */
+/* /assets/css/admin_common.css */
 
-/* 기본 레이아웃 */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-/* 컨테이너 */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* 카드 스타일 */
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.card-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-/* 사이드 메뉴 스타일 */
+/* Sidebar 스타일 */
 .sidebar {
     width: 250px;
+    background-color: #343a40;
+    padding-top: 20px;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
-    background-color: #343a40;
-    padding-top: 20px;
+}
+
+.sidebar .nav-item {
+    padding: 10px 20px;
 }
 
 .sidebar .nav-link {
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-}
-
-.sidebar .nav-link:hover {
-    background-color: #495057;
+    color: #fff;
+    font-size: 18px;
 }
 
 .sidebar .nav-link.active {
     background-color: #007bff;
+    color: #fff;
 }
 
-/* 메인 콘텐츠에 여백 추가 */
-.container {
-    margin-left: 260px; /* 사이드 메뉴 너비만큼 여백 추가 */
-}
-
-/* 테이블 스타일 */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-}
-
-th {
-    background-color: #f7f7f7;
-}
-
-/* 버튼 스타일 */
-button {
+.sidebar .nav-link:hover {
     background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+    color: #fff;
 }
 
-button:hover {
-    background-color: #0056b3;
+/* 컨텐츠 영역 스타일 */
+.container {
+    margin-left: 260px;
 }
 
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+/* 카드 스타일 */
+.card {
+    border-radius: 10px;
 }
 
-.alert-danger {
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    color: #155724;
-}
-
-/* 대시보드 스타일 */
-.dashboard-card {
-    border: 1px solid #007bff;
-    background-color: #e9f7ff;
-    color: #007bff;
-}
-
-.dashboard-card h5 {
-    font-size: 1.2em;
-}
-
-.dashboard-card p {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.dashboard-card .card-body {
+.card-body {
     padding: 20px;
-}
-
-/* 관리자 테이블 스타일 */
-#adminTable th, #adminTable td {
-    text-align: center;
-}
-
-/* 사용자 관리 버튼 */
-.manage-btn {
-    background-color: #28a745;
-    border-color: #28a745;
-    color: #fff;
-}
-
-.manage-btn:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
-}
-
-/* 쿠폰 관리 버튼 */
-.coupon-btn {
-    background-color: #ffc107;
-    border-color: #ffc107;
-    color: #fff;
-}
-
-.coupon-btn:hover {
-    background-color: #e0a800;
-    border-color: #d39e00;
-}
-
-/* 제보 확인 버튼 */
-.report-btn {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
-    color: #fff;
-}
-
-.report-btn:hover {
-    background-color: #138496;
-    border-color: #117a8b;
-}
-
-/* 모바일 대응 */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    .card {
-        padding: 15px;
-    }
-
-    table, th, td {
-        font-size: 14px;
-    }
-
-    button {
-        width: 100%;
-    }
 }

@@ -1,3 +1,51 @@
 Options +Includes
 AddType text/html .html
 AddHandler server-parsed .html
+
+# 기본 문서를 index.php로 설정
+DirectoryIndex index.php index.html
+
+# 파일 목록 표시 방지 (보안 강화)
+Options -Indexes
+
+# 올바른 MIME 타입 설정
+AddType text/html .html .php
+AddType text/css .css
+AddType text/javascript .js
+AddType application/json .json
+AddType application/xml .xml
+AddType image/svg+xml .svg
+AddType font/woff2 .woff2
+AddType font/woff .woff
+AddType application/pdf .pdf
+AddType application/zip .zip
+
+# Gzip 압축 활성화 (속도 개선)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
+</IfModule>
+
+# 브라우저 캐싱 활성화 (속도 개선)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType text/javascript "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+</IfModule>
+
+# HTTPS 강제 리디렉션 (보안 강화)
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+# www 없는 도메인으로 강제 리디렉션 (SEO 개선)
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+
+# CORS 허용
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>

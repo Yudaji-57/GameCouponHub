@@ -1,21 +1,44 @@
-/* 관리자 대시보드 스타일 */
+/* /assets/css/dashboard.css */
 
-/* 대시보드 카드 스타일 */
-.dashboard-card {
-    border: 1px solid #007bff;
-    background-color: #e9f7ff;
-    color: #007bff;
+/* 대시보드 페이지의 카드 스타일 */
+.card {
+    margin-bottom: 20px;
 }
 
-.dashboard-card h5 {
-    font-size: 1.2em;
+.card-body {
+    padding: 20px;
 }
 
-.dashboard-card p {
-    font-size: 1.5em;
+.card-title {
+    font-size: 20px;
     font-weight: bold;
 }
 
-.dashboard-card .card-body {
-    padding: 20px;
+.card-text {
+    font-size: 18px;
+}
+
+/* 테이블 스타일 */
+#couponTable {
+    margin-top: 30px;
+}
+
+#couponTable th, #couponTable td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#couponTable th {
+    background-color: #f8f9fa;
+}
+
+#couponTable td {
+    background-color: #ffffff;
+}
+
+/* 월별 통계 차트 */
+#reportChart {
+    margin-top: 30px;
+    width: 100%;
+    height: 300px;
 }
