@@ -46,6 +46,7 @@
                         <th>발급일</th>
                         <th>만료일</th>
                         <th>쿠폰 생성일</th>
+                        <th>쿠폰유형</th>
                     </tr>
                 </thead>
                 <tbody>
