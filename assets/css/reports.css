@@ -1,8 +1,15 @@
 /* 쿠폰 제보 리스트 스타일 */
 
+/* h 태그 가운데정렬 */
+h2, h3 {
+    text-align: center;
+}
+
 /* 제보 테이블 */
 #reportTable th, #reportTable td {
     text-align: center;
+    padding: 12px;
+    border: 1px solid #ddd;
 }
 
 /* 제보 테이블 행에 호버 효과 */
@@ -15,9 +22,33 @@
     background-color: #17a2b8;
     border-color: #17a2b8;
     color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .report-btn:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+/* 제보 버튼을 담은 셀 */
+.report-btn-cell {
+    text-align: center;
+}
+
+/* 제보 버튼이 포함된 테이블 셀의 스타일 */
+.report-btn-cell button {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.report-btn-cell button:hover {
     background-color: #138496;
     border-color: #117a8b;
 }

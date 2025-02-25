@@ -53,16 +53,8 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="card text-white bg-danger">
                         <div class="card-body">
-                            <h5 class="card-title">총 쿠폰 수</h5>
-                            <p class="card-text" id="totalCouponsAndReports">0개</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card text-white bg-info">
-                        <div class="card-body">
-                            <h5 class="card-title">신규 쿠폰</h5>
-                            <p class="card-text" id="newCoupons">0개</p>
+                            <h5 class="card-title">오늘 제보된 쿠폰</h5>
+                            <p class="card-text" id="todayReports">0개</p>
                         </div>
                     </div>
                 </div>

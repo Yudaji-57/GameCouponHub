@@ -21,6 +21,27 @@
     include $rootPath . "/includes/header.php";
     ?>
 
+    <!-- 사이드바 -->
+    <div id="sidebar" class="sidebar">
+        <button id="sidebar-toggle" class="btn btn-dark">
+            <i id="toggle-icon" class="fas fa-chevron-left"></i>
+        </button>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">메인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">게임 목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">내 쿠폰</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">설정</a>
+            </li>
+        </ul>
+    </div>
+
     <!-- 메인 콘텐츠 -->
     <div class="container mt-4">
         <div class="row">
@@ -29,10 +50,6 @@
                     <h2 class="display-4">환영합니다!</h2>
                     <p class="lead">게임 쿠폰을 찾고 정리하세요.</p>
                 </div>
-            </div>
-            <!-- 사이드바 -->
-            <div class="col-md-3">
-                <?php include $rootPath . "/includes/sidebar.php"; ?>
             </div>
         </div>
     </div>
@@ -45,41 +62,22 @@
     <!-- 부트스트랩 JS, Popper.js 링크 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
 
-</html>
-
-<!-- /GameCouponHub/index.php (또는 footer.php에 추가) -->
-<script>
-    document.getElementById('sidebar-toggle').addEventListener('click', function () {
-        var sidebar = document.getElementById('sidebar');
-        var icon = document.getElementById('toggle-icon');
-
-        // 'collapsed' 클래스를 추가/제거
-        sidebar.classList.toggle('collapsed');
-
-        // 아이콘 변경
-        if (sidebar.classList.contains('collapsed')) {
-            icon.classList.remove('fa-chevron-left');
-            icon.classList.add('fa-chevron-right');  // '펼치기' 아이콘
+    <!-- 공통 JS 파일 링크 -->
+    <script src="../assets/js/common.js"></script>
+    <!-- 페이지별 JS 파일 링크 -->
+    <script src="../assets/js/index.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        <?php
+        // PHP에서 세션값을 가져와서 JavaScript 변수로 전달
+        if (isset($_SESSION['user_id'])) {
+            echo "sessionStorage.setItem('user_id', '" . $_SESSION['user_id'] . "');";
         } else {
-            icon.classList.remove('fa-chevron-right');
-            icon.classList.add('fa-chevron-left');  // '접기' 아이콘
+            echo "console.log('로그인되지 않았습니다.');";
         }
+        ?>
     });
 </script>
-
-<?php
-session_start(); // 세션 시작
-
-// 로그인 상태 확인
-if (isset($_SESSION['user_id'])) {
-    // user_id 세션 값이 있을 경우, JavaScript로 전달
-    echo "<script>
-        sessionStorage.setItem('user_id', '" . $_SESSION['user_id'] . "');
-        console.log('로그인된 user_id:', sessionStorage.getItem('user_id'));
-    </script>";
-} else {
-    echo "<script>console.log('로그인되지 않았습니다.');</script>";
-}
-?>
+</body>
+</html>

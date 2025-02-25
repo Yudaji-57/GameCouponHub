@@ -6,6 +6,24 @@
     margin-top: 30px;
 }
 
+/* 1200px 이상 - 일반적인 PC 화면 */
+@media (min-width: 1200px) {
+    .container {
+        margin-left: 260px; /* 사이드바 공간 확보 */
+    }
+}
+
+/* 769px ~ 1199px - 작은 PC 창에서 사이드바 간격 조정 */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .container {
+        margin-left: 200px; /* 컨텐츠가 가려지지 않도록 조정 */
+    }
+
+    .sidebar {
+        width: 200px; /* 사이드바 너비 줄이기 */
+    }
+}
+
 h2 {
     margin-bottom: 30px;
     text-align: center;
@@ -29,7 +47,7 @@ h2 {
     border-radius: 5px;
 }
 
-/* 반응형 디자인: 화면이 좁을 때 */
+/* 반응형 디자인: 태블릿 이하 (768px 이하) */
 @media (max-width: 768px) {
     .container {
         margin-left: 0;
@@ -45,9 +63,11 @@ h2 {
         font-size: 22px;
     }
 
-    /* 사이드바 숨기기 (모바일 대응) */
+    /* 사이드바를 가려지는 게 아니라 자동으로 줄어들게 */
     .sidebar {
-        display: none;
+        width: 100%;
+        height: auto;
+        position: relative;
     }
 }
 

@@ -62,20 +62,6 @@ header.coupons-header nav ul li a:hover {
     color: #f1c40f !important; /* 마우스 올릴 때 노란색 */
 }
 
-/* 사이드바 스타일 */
-.sidebar {
-    background-color: #f4f4f4;
-    padding: 20px;
-    width: 250px;
-    position: fixed;
-    top: 100px;
-    left: 0;
-    bottom: 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease-in-out;
-    overflow-x: hidden;
-}
-
 /* 접기/펼치기 버튼 */
 .toggle-btn {
     position: absolute;
@@ -93,28 +79,6 @@ header.coupons-header nav ul li a:hover {
 
 .toggle-btn:hover {
     background: #2980b9;
-}
-
-/* 접었을 때 사이드바 스타일 */
-.sidebar.collapsed {
-    width: 50px;
-}
-
-.sidebar.collapsed .category,
-.sidebar.collapsed .ads h2 {
-    display: none;
-}
-
-/* 아이콘을 남겨서 메뉴가 있다는 것을 알 수 있도록 유지 */
-.sidebar.collapsed .category ul li a {
-    display: block;
-    text-align: center;
-    font-size: 14px;
-}
-
-/* 접기 버튼 아이콘 회전 */
-.sidebar.collapsed .toggle-btn i {
-    transform: rotate(180deg);
 }
 
 /* 푸터 스타일 */
@@ -172,4 +136,65 @@ footer a:hover {
 .coupons-header nav ul li a:hover {
     text-decoration: underline;
     color: #f1c40f !important; /* 마우스 올릴 때 노란색 */
+}
+
+/* /assets/css/common.css */
+
+/* 사이드바 기본 스타일 */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+/* 사이드바 닫힘 상태 */
+.sidebar.collapsed {
+    width: 60px; /* 접었을 때 사이드바의 너비 */
+}
+
+/* 사이드바 항목 */
+.sidebar .nav-item {
+    padding: 15px;
+}
+
+/* 사이드바 링크 스타일 */
+.sidebar .nav-link {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* 사이드바 링크 활성화 및 호버 스타일 */
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* 사이드바 토글 버튼 */
+#sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: -35px; /* 토글 버튼을 사이드바 밖에 위치시킴 */
+    background-color: #343a40;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* 사이드바 내부 내용 마진 조정 */
+.container {
+    margin-left: 260px; /* 사이드바의 너비를 제외한 마진 */
+    transition: margin-left 0.3s ease;
+}
+
+/* 사이드바 접을 때 콘텐츠 마진 조정 */
+.sidebar.collapsed + .container {
+    margin-left: 70px;
 }

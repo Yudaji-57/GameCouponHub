@@ -1,4 +1,4 @@
-<!-- pages/submit.php -->
+<!-- /GameCouponHub/pages/submit.php -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -6,7 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameCouponHub - 쿠폰 제보</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- 최신 부트스트랩 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
     <link rel="stylesheet" href="../assets/css/submit.css"> <!-- 추가적인 커스텀 스타일 -->
     <script src="../assets/js/submit.js" defer></script> <!-- submit.js: 쿠폰 제보 JS -->
@@ -20,25 +23,46 @@
     include $rootPath . "/includes/header.php";
     ?>
 
+    <!-- 사이드바 -->
+    <div id="sidebar" class="sidebar">
+        <button id="sidebar-toggle" class="btn btn-dark">
+            <i id="toggle-icon" class="fas fa-chevron-left"></i>
+        </button>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="#">메인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">게임 목록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">내 쿠폰</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">설정</a>
+            </li>
+        </ul>
+    </div>
+
     <main class="container mt-5">
         <section class="col-md-6 mx-auto">
             <h1 class="text-center mb-4">쿠폰 제보</h1>
-            <!-- 쿠폰 제보 폼 (form) 수정 -->
+            <!-- 쿠폰 제보 폼 -->
             <form id="couponForm">
                 <!-- 게임명 입력 -->
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="game">게임명:</label>
                     <input type="text" class="form-control" id="game" name="game" required>
                 </div>
 
                 <!-- 쿠폰 코드 입력 -->
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="coupon">쿠폰 코드:</label>
                     <input type="text" class="form-control" id="coupon" name="coupon" required>
                 </div>
 
                 <!-- 보상 내용 입력 -->
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="reward">보상 내용:</label>
                     <textarea class="form-control" id="reward" name="reward" rows="4" required></textarea>
                 </div>
@@ -61,9 +85,12 @@
     include $rootPath . "/includes/footer.php";
     ?>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- 부트스트랩 JS, Popper.js 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- 공통 JS 파일 링크 -->
+    <script src="../assets/js/common.js"></script>
 </body>
 
 </html>

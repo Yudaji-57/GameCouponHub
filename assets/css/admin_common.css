@@ -11,6 +11,7 @@
     left: 0;
 }
 
+/* 네비게이션 항목 스타일 */
 .sidebar .nav-item {
     padding: 10px 20px;
 }
@@ -30,9 +31,15 @@
     color: #fff;
 }
 
-/* 컨텐츠 영역 스타일 */
+/* 컨텐츠 영역 스타일 (768px 이하에서는 사이드바와 겹치지 않도록 조정) */
 .container {
-    margin-left: 260px;
+    padding: 20px;
+}
+
+@media (min-width: 769px) {
+    .container {
+        margin-left: 260px;
+    }
 }
 
 /* 카드 스타일 */
