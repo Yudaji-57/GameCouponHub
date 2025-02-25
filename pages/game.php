@@ -78,6 +78,11 @@
 
     <!-- 공통 JS 파일 링크 -->
     <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+
+    <script>
+        document.title = "GameCouponHub - 게임별 쿠폰"; // 이 부분을 각 페이지별로 설정
+    </script>
 </body>
 
 </html>

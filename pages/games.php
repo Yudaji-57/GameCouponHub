@@ -40,8 +40,93 @@
     </nav>
 
     <main class="content">
-        <h1>게임 목록</h1>
-        <p>여기에 게임 목록이 표시됩니다.</p>
+        <h1>공식 쿠폰 제공 게임 목록</h1>
+        <p>다양한 게임에서 제공되는 공식 쿠폰을 확인하고, 쿠폰을 활용해 보세요.</p>
+
+        <div class="row">
+
+            <!-- 게임 1 -->
+            <div class="col-md-2 col-sm-3 col-4 mb-4">
+                <div class="card">
+                    <img src="../assets/images/game_images/초월자키우기.webp" class="card-img-top" alt="초월자키우기" style="object-fit: cover; width: 100%; height: 120px;">
+                    <div class="card-body d-flex flex-column justify-content-between" style="height: 150px;">
+                        <h5 class="card-title text-center">
+                            초월자 키우기 <br> 방치형 RPG
+                        </h5>
+                        <div class="d-flex justify-content-between mt-auto" style="gap: 10px;">
+                            <a href="https://play.google.com/store/apps/details?id=com.playgames.transcender" target="_blank" class="btn btn-primary">게임 다운로드하기</a>
+                            <a href="#" class="btn btn-primary">사용 가능 쿠폰 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 게임 2 -->
+            <div class="col-md-2 col-sm-3 col-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="게임 2 이미지" style="object-fit: cover; width: 100%; height: 120px;">
+                    <div class="card-body d-flex flex-column justify-content-between" style="height: 150px;">
+                        <h5 class="card-title text-center">
+                            게임2
+                        </h5>
+                        <div class="d-flex justify-content-between mt-auto" style="gap: 10px;">
+                            <a href="#" class="btn btn-primary" disabled>게임 다운로드하기</a>
+                            <a href="#" class="btn btn-primary" disabled>사용 가능 쿠폰 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 게임 3 -->
+            <div class="col-md-2 col-sm-3 col-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="게임 3 이미지" style="object-fit: cover; width: 100%; height: 120px;">
+                    <div class="card-body d-flex flex-column justify-content-between" style="height: 150px;">
+                        <h5 class="card-title text-center">
+                            게임3
+                        </h5>
+                        <div class="d-flex justify-content-between mt-auto" style="gap: 10px;">
+                            <a href="#" class="btn btn-primary">게임 다운로드하기</a>
+                            <a href="#" class="btn btn-primary">사용 가능 쿠폰 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 게임 4 -->
+            <div class="col-md-2 col-sm-3 col-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="게임 4 이미지" style="object-fit: cover; width: 100%; height: 120px;">
+                    <div class="card-body d-flex flex-column justify-content-between" style="height: 150px;">
+                        <h5 class="card-title text-center">
+                            게임4
+                        </h5>
+                        <div class="d-flex justify-content-between mt-auto" style="gap: 10px;">
+                            <a href="#" class="btn btn-primary">게임 다운로드하기</a>
+                            <a href="#" class="btn btn-primary">사용 가능 쿠폰 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 게임 5 -->
+            <div class="col-md-2 col-sm-3 col-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="게임 5 이미지" style="object-fit: cover; width: 100%; height: 120px;">
+                    <div class="card-body d-flex flex-column justify-content-between" style="height: 150px;">
+                        <h5 class="card-title text-center">
+                            게임5
+                        </h5>
+                        <div class="d-flex justify-content-between mt-auto" style="gap: 10px;">
+                            <a href="#" class="btn btn-primary" disabled>게임 다운로드하기</a>
+                            <a href="#" class="btn btn-primary" disabled>사용 가능 쿠폰 보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </main>
 
     <?php
@@ -54,6 +139,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
     <script src="../assets/js/user_common.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+
+    <script>
+        document.title = "GameCouponHub - 게임 목록"; // 이 부분을 각 페이지별로 설정
+    </script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<!-- /main/settings.php -->
+<!-- /pages/settings.php -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -54,6 +54,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
     <script src="/assets/js/user_common.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+
+    <script>
+        document.title = "GameCouponHub - 설정페이지"; // 이 부분을 각 페이지별로 설정
+    </script>
 </body>
 
 </html>

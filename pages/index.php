@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameCouponHub</title>
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <!-- 부트스트랩 CSS 링크 -->
@@ -65,19 +64,23 @@
 
     <!-- 공통 JS 파일 링크 -->
     <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
     <!-- 페이지별 JS 파일 링크 -->
     <script src="../assets/js/index.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        <?php
-        // PHP에서 세션값을 가져와서 JavaScript 변수로 전달
-        if (isset($_SESSION['user_id'])) {
-            echo "sessionStorage.setItem('user_id', '" . $_SESSION['user_id'] . "');";
-        } else {
-            echo "console.log('로그인되지 않았습니다.');";
-        }
-        ?>
-    });
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            <?php
+            // PHP에서 세션값을 가져와서 JavaScript 변수로 전달
+            if (isset($_SESSION['user_id'])) {
+                echo "sessionStorage.setItem('user_id', '" . $_SESSION['user_id'] . "');";
+            } else {
+                echo "console.log('로그인되지 않았습니다.');";
+            }
+            ?>
+        });
+        // 페이지마다 타이틀을 설정하는 코드
+        document.title = "GameCouponHub - 메인페이지"; // 이 부분을 각 페이지별로 설정
+    </script>
 </body>
+
 </html>

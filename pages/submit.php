@@ -30,16 +30,16 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#">메인</a>
+                <a class="nav-link" href="/pages/index.php">메인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">게임 목록</a>
+                <a class="nav-link" href="/pages/games.php">게임 목록</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">내 쿠폰</a>
+                <a class="nav-link" href="/pages/my_coupons.php">내 쿠폰</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">설정</a>
+                <a class="nav-link" href="/pages/settings.php">설정</a>
             </li>
         </ul>
     </div>
@@ -48,13 +48,13 @@
         <section class="col-md-6 mx-auto">
             <h1 class="text-center mb-4">쿠폰 제보</h1>
 
-            <!-- 설명란 -->
-            <div class="alert alert-info text-center">
-                <i class="fas fa-info-circle"></i>
-                소중한 쿠폰 제보 감사합니다! 🎉 <br>
-                관리자가 확인 후 빠르게 정상 쿠폰으로 반영하겠습니다. <br>
-                <strong>- GameCouponHub 운영팀 -</strong>
-            </div>
+<!-- 설명란 -->
+<div class="alert alert-info text-center">
+    <i class="fas fa-info-circle"></i>
+    소중한 쿠폰 제보 감사합니다! 🎉 <br>
+    관리자가 확인 후 빠르게 정상 쿠폰으로 반영하겠습니다. <br>
+    <strong>- GameCouponHub 운영팀 -</strong>
+</div>
 
 
             <!-- 쿠폰 제보 폼 -->
@@ -95,5 +95,17 @@
     include $rootPath . "/includes/footer.php";
     ?>
 
+
     <!-- 부트스트랩 JS, Popper.js 링크 -->
-    <script src="https://cdn.jsdelivr.net/np
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script src="../assets/js/submit.js"></script>
+        <script src="../assets/js/siteTitleAndFavicon.js"></script>
+
+        <script>
+        document.title = "GameCouponHub - 쿠폰제보"; // 이 부분을 각 페이지별로 설정
+    </script>
+</body>
+
+</html>
