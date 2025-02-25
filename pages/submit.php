@@ -47,6 +47,16 @@
     <main class="container mt-5">
         <section class="col-md-6 mx-auto">
             <h1 class="text-center mb-4">쿠폰 제보</h1>
+
+            <!-- 설명란 -->
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle"></i>
+                소중한 쿠폰 제보 감사합니다! 🎉 <br>
+                관리자가 확인 후 빠르게 정상 쿠폰으로 반영하겠습니다. <br>
+                <strong>- GameCouponHub 운영팀 -</strong>
+            </div>
+
+
             <!-- 쿠폰 제보 폼 -->
             <form id="couponForm">
                 <!-- 게임명 입력 -->
@@ -86,11 +96,4 @@
     ?>
 
     <!-- 부트스트랩 JS, Popper.js 링크 -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
-    <!-- 공통 JS 파일 링크 -->
-    <script src="../assets/js/common.js"></script>
-</body>
-
-</html>
+    <script src="https://cdn.jsdelivr.net/np

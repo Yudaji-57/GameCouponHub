@@ -1,9 +1,32 @@
 /* /assets/css/edit_user.css */
 
-/* 기본 폼 스타일 */
+/* 라이트/다크 모드 공통 색상 설정 */
+:root {
+    --container-bg-light: #ffffff;
+    --container-bg-dark: #1e1e1e;
+    --form-control-bg-light: #f8f9fa;
+    --form-control-bg-dark: #333333;
+    --form-control-text-light: #000000;
+    --form-control-text-dark: #ffffff;
+    --btn-bg-light: #007bff;
+    --btn-bg-dark: #0056b3;
+    --btn-text-light: #ffffff;
+    --btn-text-dark: #ffffff;
+    --text-light: #000000;
+    --text-dark: #ffffff;
+}
+
+/* 기본 스타일 (라이트 모드) */
+body {
+    background-color: var(--container-bg-light);
+    color: var(--text-light);
+}
+
 .container {
     max-width: 800px; /* 폼 최대 너비 설정 */
     margin-top: 30px;
+    background-color: var(--container-bg-light); /* 라이트 모드 배경 */
+    color: var(--text-light); /* 라이트 모드 텍스트 색상 */
 }
 
 /* 1200px 이상 - 일반적인 PC 화면 */
@@ -27,16 +50,20 @@
 h2 {
     margin-bottom: 30px;
     text-align: center;
+    color: var(--text-light); /* 라이트 모드 텍스트 색상 */
 }
 
 /* 폼 입력 필드 스타일 */
 .form-label {
     font-weight: bold;
+    color: var(--text-light); /* 라이트 모드 텍스트 색상 */
 }
 
 .form-control {
     border-radius: 5px;
     padding: 10px;
+    background-color: var(--form-control-bg-light); /* 라이트 모드 입력 필드 배경 */
+    color: var(--form-control-text-light); /* 라이트 모드 입력 필드 텍스트 색상 */
 }
 
 /* 버튼 스타일 */
@@ -45,6 +72,8 @@ h2 {
     padding: 12px;
     font-size: 16px;
     border-radius: 5px;
+    background-color: var(--btn-bg-light); /* 라이트 모드 버튼 배경 */
+    color: var(--btn-text-light); /* 라이트 모드 버튼 텍스트 색상 */
 }
 
 /* 반응형 디자인: 태블릿 이하 (768px 이하) */
@@ -81,4 +110,44 @@ h2 {
     h2 {
         font-size: 18px;
     }
+}
+
+/* 다크 모드 스타일 */
+.dark-mode {
+    --container-bg-light: #2c2c2c; /* 다크 모드 배경 */
+    --container-bg-dark: #121212; /* 다크 모드 배경 */
+    --form-control-bg-light: #444444; /* 다크 모드 입력 필드 배경 */
+    --form-control-bg-dark: #333333; /* 다크 모드 입력 필드 배경 */
+    --form-control-text-light: #ffffff; /* 다크 모드 입력 필드 텍스트 색상 */
+    --form-control-text-dark: #bbbbbb; /* 다크 모드 입력 필드 텍스트 색상 */
+    --btn-bg-light: #0056b3; /* 다크 모드 버튼 배경 */
+    --btn-bg-dark: #007bff; /* 다크 모드 버튼 배경 */
+    --btn-text-light: #ffffff; /* 다크 모드 버튼 텍스트 색상 */
+    --btn-text-dark: #ffffff; /* 다크 모드 버튼 텍스트 색상 */
+    --text-light: #ffffff; /* 다크 모드 텍스트 색상 */
+    --text-dark: #bbbbbb; /* 다크 모드 텍스트 색상 */
+}
+
+/* 다크 모드 적용 */
+.dark-mode .container {
+    background-color: var(--container-bg-dark); /* 다크 모드 배경 */
+    color: var(--text-dark); /* 다크 모드 텍스트 색상 */
+}
+
+.dark-mode .form-control {
+    background-color: var(--form-control-bg-dark); /* 다크 모드 입력 필드 배경 */
+    color: var(--form-control-text-dark); /* 다크 모드 입력 필드 텍스트 색상 */
+}
+
+.dark-mode .btn {
+    background-color: var(--btn-bg-dark); /* 다크 모드 버튼 배경 */
+    color: var(--btn-text-dark); /* 다크 모드 버튼 텍스트 색상 */
+}
+
+.dark-mode h2 {
+    color: var(--text-dark); /* 다크 모드 텍스트 색상 */
+}
+
+.dark-mode .form-label {
+    color: var(--text-dark); /* 다크 모드 텍스트 색상 */
 }

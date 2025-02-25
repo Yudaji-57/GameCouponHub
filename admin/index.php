@@ -20,7 +20,11 @@
                 <li class="nav-item"><a class="nav-link" href="/admin/manage_coupons.php">쿠폰 관리</a></li>
                 <li class="nav-item"><a class="nav-link" href="/admin/reports.php">쿠폰 제보</a></li>
             </ul>
+
+            <!-- 다크 모드 토글 버튼 (사이드바 하단) -->
+            <button id="darkModeToggle" class="btn btn-secondary mode-toggle">🌙</button>
         </div>
+
 
         <div class="container mt-5">
             <h2>관리자 대시보드</h2>
@@ -63,7 +67,13 @@
             <h4>최근 쿠폰 제보 리스트</h4>
             <table id="couponTable" class="table">
                 <thead>
-                    <tr><th>아이디</th><th>게임명</th><th>쿠폰 코드</th><th>보상 내용</th><th>제보 날짜</th></tr>
+                    <tr>
+                        <th>아이디</th>
+                        <th>게임명</th>
+                        <th>쿠폰 코드</th>
+                        <th>보상 내용</th>
+                        <th>제보 날짜</th>
+                    </tr>
                 </thead>
                 <tbody></tbody>
             </table>
@@ -74,6 +84,7 @@
     </div>
 
     <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/darkMode.js"></script>
 </body>
 
 </html>

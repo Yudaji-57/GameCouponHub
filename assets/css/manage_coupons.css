@@ -57,11 +57,22 @@ body {
 #couponTable {
     width: 100%;
     border-collapse: collapse;
+    background-color: #fff; /* 테이블 배경색을 흰색으로 설정 */
+    border: 1px solid #ddd; /* 테두리 색상 */
 }
 
 #couponTable th, #couponTable td {
     text-align: center;
-    padding: 10px;
+    padding: 12px;
+    border: 1px solid #ddd; /* 테두리 추가 */
+    color: #333; /* 텍스트 색상 변경 (어두운 색) */
+}
+
+/* 헤더 셀 */
+#couponTable th {
+    background-color: #f8f9fa; /* 헤더 배경을 연한 회색으로 설정 */
+    font-weight: bold;
+    color: #333; /* 텍스트 색상 */
 }
 
 /* 메시지 알림 */
@@ -74,3 +85,42 @@ body {
 .d-flex.justify-content-between {
     margin-top: 20px;
 }
+
+/* 사용가능 상태 */
+.available {
+    background-color: var(--available-bg) !important; /* 변수로 지정된 배경색 */
+    color: var(--available-text) !important; /* 변수로 지정된 글자색 */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3); /* 밝은 초록색 그림자 추가 */
+}
+
+/* 사용불가 상태 */
+.expired {
+    background-color: var(--expired-bg) !important; /* 변수로 지정된 배경색 */
+    color: var(--expired-text) !important; /* 변수로 지정된 글자색 */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3); /* 밝은 빨간색 그림자 추가 */
+}
+
+/* 다크 모드와 라이트 모드에서 색상 변수 정의 */
+:root {
+    --available-bg: #28a745;
+    --available-text: #ffffff;
+    --expired-bg: #dc3545;
+    --expired-text: #ffffff;
+}
+
+.dark-mode {
+    --available-bg: #1e7e34; /* 다크 모드에서 더 어두운 초록색 */
+    --available-text: #ffffff;
+    --expired-bg: #c82333; /* 다크 모드에서 더 어두운 빨간색 */
+    --expired-text: #ffffff;
+}
+
+

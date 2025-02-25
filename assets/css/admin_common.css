@@ -50,3 +50,65 @@
 .card-body {
     padding: 20px;
 }
+
+/* 다크 모드 변수 */
+:root {
+    --sidebar-bg: #343a40;
+    --sidebar-text: #ffffff;
+    --sidebar-hover: #007bff;
+    --body-bg: #ffffff;
+    --body-text: #000000;
+}
+
+/* 다크 모드 스타일 */
+.dark-mode {
+    --sidebar-bg: #1e1e1e;
+    --sidebar-text: #bbbbbb;
+    --sidebar-hover: #4f85ff;
+    --body-bg: #121212;
+    --body-text: #ffffff;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 네비게이션 스타일 */
+.sidebar .nav {
+    flex-grow: 1; /* 네비게이션 영역 확장 */
+}
+
+.sidebar .nav-link {
+    color: var(--sidebar-text);
+}
+
+.sidebar .nav-link:hover {
+    background-color: var(--sidebar-hover);
+}
+
+/* 다크 모드 토글 버튼 (하단 고정) */
+.mode-toggle {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--sidebar-text);
+    margin: 10px;
+    align-self: center;
+}
+
+/* 다크 모드에서 body 스타일 변경 */
+body.dark-mode {
+    background-color: var(--body-bg);
+    color: var(--body-text);
+}

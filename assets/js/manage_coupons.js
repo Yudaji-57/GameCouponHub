@@ -35,8 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             // 만료 여부 구분
-            const isExpired = coupon.expiry_date && new Date(coupon.expiry_date) < new Date() ? '만료' : '유효';
-
+            const isExpired = coupon.expiry_date && new Date(coupon.expiry_date) < new Date();
+            const statusText = isExpired ? '사용불가' : '사용가능';
+            const statusClass = isExpired ? 'expired' : 'available';
+            
             row.innerHTML = `
                 <td>${coupon.game_name}</td>
                 <td>${coupon.coupon_code}</td>
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${formatDate(coupon.expiry_date)}</td>
                 <td>${formatDate(coupon.coupon_created_at)}</td>
                 <td>${coupon.coupon_type}</td>
-                <td>${isExpired}</td>
+                <td class="${statusClass}">${statusText}</td>
             `;
             couponTableBody.appendChild(row);
         });

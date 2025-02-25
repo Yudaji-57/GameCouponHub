@@ -14,11 +14,14 @@
 <body>
     <div class="sidebar">
         <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link active" href="/admin/index.php">관리자 대시보드</a></li>
-            <li class="nav-item"><a class="nav-link" href="/admin/manage_users.php">유저 현황</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/index.php">관리자 대시보드</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/admin/manage_users.php">유저 현황</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/manage_coupons.php">쿠폰 관리</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/reports.php">쿠폰 제보</a></li>
         </ul>
+
+        <!-- 다크 모드 토글 버튼 (사이드바 하단) -->
+        <button id="darkModeToggle" class="btn btn-secondary mode-toggle">🌙</button>
     </div>
 
     <div class="container mt-5">
@@ -56,6 +59,7 @@
     </div>
 
     <script src="/assets/js/edit_user.js"></script>
+    <script src="../assets/js/darkMode.js"></script>
 </body>
 
 </html>

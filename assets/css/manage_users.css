@@ -1,23 +1,73 @@
 /* 사용자 관리 페이지 스타일 */
 
+/* 라이트/다크 모드 공통 색상 설정 */
+:root {
+    --user-table-bg-light: #ffffff;
+    --user-table-bg-dark: #333333;
+    --user-table-hover-light: #f1f1f1;
+    --user-table-hover-dark: #555555;
+    --btn-bg-light: #28a745;
+    --btn-bg-dark: #4caf50;
+    --btn-text-light: #ffffff;
+    --btn-text-dark: #ffffff;
+    --btn-hover-bg-light: #218838;
+    --btn-hover-bg-dark: #388e3c;
+}
+
 /* 사용자 테이블 */
 #userTable th, #userTable td {
     text-align: center;
+    background-color: var(--user-table-bg-light); /* 라이트 모드 테이블 배경 */
 }
 
 /* 테이블 행에 호버 스타일 */
 #userTable tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--user-table-hover-light); /* 라이트 모드 호버 배경 */
 }
 
 /* 사용자 관리 버튼 */
 .manage-btn {
-    background-color: #28a745;
-    border-color: #28a745;
-    color: #fff;
+    background-color: var(--btn-bg-light); /* 라이트 모드 버튼 배경 */
+    border-color: var(--btn-bg-light); /* 라이트 모드 버튼 경계 색상 */
+    color: var(--btn-text-light); /* 버튼 텍스트 색상 */
 }
 
 .manage-btn:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+    background-color: var(--btn-hover-bg-light); /* 라이트 모드 버튼 호버 배경 */
+    border-color: var(--btn-hover-bg-light); /* 라이트 모드 버튼 호버 경계 색상 */
+}
+
+/* 다크 모드 스타일 */
+.dark-mode {
+    --user-table-bg-light: #444444; /* 다크 모드 테이블 배경 */
+    --user-table-bg-dark: #222222; /* 다크 모드 테이블 배경 */
+    --user-table-hover-light: #666666; /* 다크 모드 호버 배경 */
+    --user-table-hover-dark: #555555; /* 다크 모드 호버 배경 */
+    --btn-bg-light: #4caf50; /* 다크 모드 버튼 배경 */
+    --btn-bg-dark: #388e3c; /* 다크 모드 버튼 배경 */
+    --btn-text-light: #ffffff; /* 다크 모드 버튼 텍스트 색상 */
+    --btn-text-dark: #ffffff; /* 다크 모드 버튼 텍스트 색상 */
+    --btn-hover-bg-light: #388e3c; /* 다크 모드 버튼 호버 배경 */
+    --btn-hover-bg-dark: #2b7a3b; /* 다크 모드 버튼 호버 배경 */
+}
+
+/* 다크 모드 적용 */
+.dark-mode #userTable th, .dark-mode #userTable td {
+    background-color: var(--user-table-bg-dark); /* 다크 모드 테이블 배경 */
+    color: var(--btn-text-dark); /* 다크 모드 테이블 텍스트 색상 */
+}
+
+.dark-mode #userTable tr:hover {
+    background-color: var(--user-table-hover-dark); /* 다크 모드 호버 배경 */
+}
+
+.dark-mode .manage-btn {
+    background-color: var(--btn-bg-dark); /* 다크 모드 버튼 배경 */
+    border-color: var(--btn-bg-dark); /* 다크 모드 버튼 경계 색상 */
+    color: var(--btn-text-dark); /* 다크 모드 버튼 텍스트 색상 */
+}
+
+.dark-mode .manage-btn:hover {
+    background-color: var(--btn-hover-bg-dark); /* 다크 모드 버튼 호버 배경 */
+    border-color: var(--btn-hover-bg-dark); /* 다크 모드 버튼 호버 경계 색상 */
 }

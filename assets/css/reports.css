@@ -1,6 +1,20 @@
 /* 쿠폰 제보 리스트 스타일 */
 
-/* h 태그 가운데정렬 */
+/* 라이트/다크 모드 공통 색상 설정 */
+:root {
+    --report-table-bg-light: #ffffff;
+    --report-table-bg-dark: #333333;
+    --report-table-hover-light: #f9f9f9;
+    --report-table-hover-dark: #555555;
+    --btn-bg-light: #17a2b8;
+    --btn-bg-dark: #0097a7;
+    --btn-text-light: #ffffff;
+    --btn-text-dark: #ffffff;
+    --btn-hover-bg-light: #138496;
+    --btn-hover-bg-dark: #007b8b;
+}
+
+/* h 태그 가운데 정렬 */
 h2, h3 {
     text-align: center;
 }
@@ -10,18 +24,19 @@ h2, h3 {
     text-align: center;
     padding: 12px;
     border: 1px solid #ddd;
+    background-color: var(--report-table-bg-light); /* 라이트 모드 배경 */
 }
 
 /* 제보 테이블 행에 호버 효과 */
 #reportTable tr:hover {
-    background-color: #f9f9f9;
+    background-color: var(--report-table-hover-light); /* 라이트 모드 호버 배경 */
 }
 
 /* 제보 확인 버튼 */
 .report-btn {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
-    color: #fff;
+    background-color: var(--btn-bg-light); /* 라이트 모드 버튼 배경 */
+    border-color: var(--btn-bg-light); /* 라이트 모드 버튼 경계 색상 */
+    color: var(--btn-text-light); /* 버튼 텍스트 색상 */
     padding: 8px 12px;
     border-radius: 5px;
     font-size: 14px;
@@ -29,8 +44,8 @@ h2, h3 {
 }
 
 .report-btn:hover {
-    background-color: #138496;
-    border-color: #117a8b;
+    background-color: var(--btn-hover-bg-light); /* 라이트 모드 버튼 호버 배경 */
+    border-color: var(--btn-hover-bg-light); /* 라이트 모드 버튼 호버 경계 색상 */
 }
 
 /* 제보 버튼을 담은 셀 */
@@ -49,6 +64,41 @@ h2, h3 {
 }
 
 .report-btn-cell button:hover {
-    background-color: #138496;
-    border-color: #117a8b;
+    background-color: var(--btn-hover-bg-light); /* 라이트 모드 버튼 호버 배경 */
+    border-color: var(--btn-hover-bg-light); /* 라이트 모드 버튼 호버 경계 색상 */
+}
+
+/* 다크 모드 스타일 */
+.dark-mode {
+    --report-table-bg-light: #444444; /* 다크 모드 테이블 배경 */
+    --report-table-bg-dark: #222222; /* 다크 모드 테이블 배경 */
+    --report-table-hover-light: #666666; /* 다크 모드 호버 배경 */
+    --report-table-hover-dark: #555555; /* 다크 모드 호버 배경 */
+    --btn-bg-light: #0097a7; /* 다크 모드 버튼 배경 */
+    --btn-bg-dark: #007b8b; /* 다크 모드 버튼 배경 */
+    --btn-text-light: #ffffff; /* 다크 모드 버튼 텍스트 색상 */
+    --btn-text-dark: #ffffff; /* 다크 모드 버튼 텍스트 색상 */
+    --btn-hover-bg-light: #007b8b; /* 다크 모드 버튼 호버 배경 */
+    --btn-hover-bg-dark: #005f6b; /* 다크 모드 버튼 호버 배경 */
+}
+
+/* 다크 모드 적용 */
+.dark-mode #reportTable th, .dark-mode #reportTable td {
+    background-color: var(--report-table-bg-dark); /* 다크 모드 테이블 배경 */
+    color: var(--btn-text-dark); /* 다크 모드 테이블 텍스트 색상 */
+}
+
+.dark-mode #reportTable tr:hover {
+    background-color: var(--report-table-hover-dark); /* 다크 모드 호버 배경 */
+}
+
+.dark-mode .report-btn {
+    background-color: var(--btn-bg-dark); /* 다크 모드 버튼 배경 */
+    border-color: var(--btn-bg-dark); /* 다크 모드 버튼 경계 색상 */
+    color: var(--btn-text-dark); /* 다크 모드 버튼 텍스트 색상 */
+}
+
+.dark-mode .report-btn:hover {
+    background-color: var(--btn-hover-bg-dark); /* 다크 모드 버튼 호버 배경 */
+    border-color: var(--btn-hover-bg-dark); /* 다크 모드 버튼 호버 경계 색상 */
 }
