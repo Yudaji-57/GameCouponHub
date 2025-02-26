@@ -6,7 +6,7 @@ session_start();
 require_once '/volume1/web/GameCouponHub/backend/config/database.php'; // 경로에 맞게 수정
 
 // Composer autoload 파일을 포함
-require 'vendor/autoload.php';
+require '/volume1/web/GameCouponHub/vendor/autoload.php';  // 절대 경로로 수정
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -45,12 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             // 서버 설정
             $mail->isSMTP();
-            $mail->Host = 'smtp.yudaji.synology.me';  // SMTP 서버 주소 (예: Gmail, SMTP 서버 주소 입력)
+            $mail->Host = 'smtp.yudaji.synology.me';
             $mail->SMTPAuth = true;
-            $mail->Username = 'couponhub@yudaji.synology.me'; // SMTP 인증 사용자
-            $mail->Password = 'A7a127fa5!@#'; // SMTP 비밀번호
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;  // SMTP 포트
+            $mail->Username = 'couponhub@yudaji.synology.me';
+            $mail->Password = 'A7a127fa5!@#'; // 비밀번호 확인
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // STARTTLS 또는 PHPMailer::ENCRYPTION_SMTPS
+            $mail->Port = 587;  // 포트 587 (STARTTLS)                      
+            $mail->SMTPDebug = 2; // 디버깅 활성화 (1=일부 출력, 2=모든 출력)
+            $mail->CharSet = 'UTF-8';  // 문자 인코딩을 UTF-8로 설정
 
             // 수신자 설정
             $mail->setFrom('couponhub@yudaji.synology.me', 'No Reply');
@@ -70,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: /auth/forgot_password.php");
             exit;
         }
-
     } catch (PDOException $e) {
         $_SESSION['error_message'] = "비밀번호 찾기 처리 중 오류가 발생했습니다: " . $e->getMessage();
         header("Location: /auth/forgot_password.php");
@@ -81,4 +82,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: /auth/forgot_password.php");
     exit;
 }
-?>

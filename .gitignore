@@ -1,0 +1,12 @@
+# .env 파일 (민감한 환경 변수)
+.env
+
+# 데이터베이스 연결문 파일 (민감한 데이터베이스 정보 포함)
+backend/config/database.php
+
+# PHP Composer 의존성 파일 (디렉토리에서 제외할 경우)
+vendor/
+
+# 운영체제에 따른 빌드/캐시 파일들
+.DS_Store
+Thumbs.db
