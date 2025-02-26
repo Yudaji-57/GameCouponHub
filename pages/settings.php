@@ -25,19 +25,19 @@
     ?>
 
     <nav id="sidebar" class="sidebar">
-        <ul class="nav flex-column">
+    <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="/pages/index.php">메인</a>
+                <a class="nav-link " href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/games.php">게임 목록</a>
+                <a class="nav-link" href="../pages/games.php">게임 목록</a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/my_coupons.php')">내 쿠폰</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                    <a class="nav-link active" href="#" onclick="navigateTo('../pages/settings.php')">설정</a>
                 </li>
             <?php endif; ?>
         </ul>

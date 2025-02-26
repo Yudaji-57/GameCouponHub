@@ -36,23 +36,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateStmt->execute();
 
             // 로그인 성공 후 리다이렉트
-            header("Location: /pages/index.php"); // 로그인 후 홈으로 이동
+            header("Location: ../pages/index.php"); // 로그인 후 홈으로 이동
             exit();
         } else {
             // 비밀번호 불일치
             $_SESSION['error_message'] = "아이디나 비밀번호가 잘못되었습니다.";
-            header("Location: /auth/login.php"); // 로그인 페이지로 돌아가기
+            header("Location: ../auth/login.php"); // 로그인 페이지로 돌아가기
             exit();
         }
     } else {
         // 사용자 없음
         $_SESSION['error_message'] = "아이디나 비밀번호가 잘못되었습니다.";
-        header("Location: /auth/login.php"); // 로그인 페이지로 돌아가기
+        header("Location: ../auth/login.php"); // 로그인 페이지로 돌아가기
         exit();
     }
 } else {
     // POST 요청이 아닌 경우 로그인 페이지로 리다이렉트
-    header("Location: /auth/login.php");
+    header("Location: ../auth/login.php");
     exit();
 }
 ?>

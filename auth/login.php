@@ -30,22 +30,28 @@
         <button id="sidebar-toggle" class="btn btn-dark">
             <i id="toggle-icon" class="fas fa-chevron-left"></i>
         </button>
+    <!-- 사이드바 -->
+    <div id="sidebar" class="sidebar">
+        <button id="sidebar-toggle" class="btn btn-dark">
+            <i id="toggle-icon" class="fas fa-chevron-left"></i>
+        </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="/pages/index.php">메인</a>
+                <a class="nav-link" href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/games.php">게임 목록</a>
+                <a class="nav-link" href="../pages/games.php">게임 목록</a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/my_coupons.php')">내 쿠폰</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/settings.php')">설정</a>
                 </li>
             <?php endif; ?>
         </ul>
+    </div>
     </div>
 
     <div class="container mt-5">
@@ -63,7 +69,7 @@
                     }
                     ?>
 
-                    <form action="/auth/process_login.php" method="post">
+                    <form action="../auth/process_login.php" method="post">
                         <div class="mb-3">
                             <label for="userId" class="form-label">아이디</label>
                             <input type="text" id="userId" name="userId" class="form-control" required>
@@ -76,8 +82,8 @@
                     </form>
 
                     <div class="text-center mt-3">
-                        <a href="/auth/register.php" class="btn btn-outline-success mx-2">회원가입</a>
-                        <a href="/auth/forgot_password.php" class="btn btn-outline-info mx-2">비밀번호 찾기</a>
+                        <a href="../auth/register.php" class="btn btn-outline-success mx-2">회원가입</a>
+                        <a href="../auth/forgot_password.php" class="btn btn-outline-info mx-2">비밀번호 찾기</a>
                     </div>
 
 
@@ -111,7 +117,7 @@
     <!-- 부트스트랩 JS, Popper.js 링크 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="/assets/js/auth.js"></script>
+    <script src="../assets/js/auth.js"></script>
     <script>
         function navigateTo(url) {
             <?php if (!$isLoggedIn): ?>

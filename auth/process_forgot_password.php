@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!$user) {
             $_SESSION['error_message'] = "이메일 주소가 등록되지 않았습니다.";
-            header("Location: /auth/forgot_password.php");
+            header("Location: ../auth/forgot_password.php");
             exit;
         }
 
@@ -74,20 +74,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $mail->send();
             $_SESSION['success_message'] = "비밀번호 재설정 링크가 이메일로 전송되었습니다.";
-            header("Location: /auth/forgot_password.php");
+            header("Location: ../auth/forgot_password.php");
             exit;
         } catch (Exception $e) {
             $_SESSION['error_message'] = "이메일 전송에 실패했습니다: {$mail->ErrorInfo}";
-            header("Location: /auth/forgot_password.php");
+            header("Location: ../auth/forgot_password.php");
             exit;
         }
     } catch (PDOException $e) {
         $_SESSION['error_message'] = "비밀번호 찾기 처리 중 오류가 발생했습니다: " . $e->getMessage();
-        header("Location: /auth/forgot_password.php");
+        header("Location: ../auth/forgot_password.php");
         exit;
     }
 } else {
     $_SESSION['error_message'] = "잘못된 접근입니다.";
-    header("Location: /auth/forgot_password.php");
+    header("Location: ../auth/forgot_password.php");
     exit;
 }

@@ -45,8 +45,8 @@
                 </form>
 
                 <div class="text-center mt-3">
-                    <a href="/auth/login.php">로그인</a> |
-                    <a href="/auth/register.php">회원가입</a>
+                    <a href="../auth/login.php">로그인</a> |
+                    <a href="../auth/register.php">회원가입</a>
                 </div>
             </div>
         </div>

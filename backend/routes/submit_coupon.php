@@ -52,7 +52,7 @@ try {
     echo json_encode([
         'success' => true,
         'message' => '쿠폰이 성공적으로 제보되었습니다!',
-        'redirect' => '/pages/index.php' // 절대 경로 사용
+        'redirect' => '../pages/index.php' // 절대 경로 사용
     ]);    
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'message' => '데이터 저장 실패: ' . $e->getMessage()]);

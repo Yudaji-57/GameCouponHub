@@ -29,7 +29,7 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="/pages/index.php">메인</a>
+                <a class="nav-link active" href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/pages/games.php">게임 목록</a>
