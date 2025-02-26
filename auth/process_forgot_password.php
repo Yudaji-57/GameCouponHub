@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mail->Host = 'smtp.yudaji.synology.me';  // SMTP 서버 주소 (예: Gmail, SMTP 서버 주소 입력)
             $mail->SMTPAuth = true;
             $mail->Username = 'couponhub@yudaji.synology.me'; // SMTP 인증 사용자
-            $mail->Password = 'A7a127fa5!@#'; // SMTP 비밀번호
+            
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;  // SMTP 포트
 
