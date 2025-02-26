@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 비밀번호 확인
     if ($password !== $confirmPassword) {
         $_SESSION['error_message'] = "비밀번호가 일치하지 않습니다.";
-        header("Location: ../auth/register.php");
+        header("Location: /auth/register.php");
         exit;
     }
 
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($user) {
             $_SESSION['error_message'] = "이미 존재하는 아이디나 이메일입니다.";
-            header("Location: ../auth/register.php");
+            header("Location: /auth/register.php");
             exit;
         }
 
@@ -48,16 +48,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // 회원가입 성공 후 로그인 페이지로 리디렉션
         $_SESSION['success_message'] = "회원가입이 완료되었습니다. 로그인 해주세요.";
-        header("Location: ../auth/login.php");
+        header("Location: /auth/login.php");
         exit;
 
     } catch (PDOException $e) {
         $_SESSION['error_message'] = "회원가입 처리 중 오류가 발생했습니다.";
-        header("Location: ../auth/register.php");
+        header("Location: /auth/register.php");
         exit;
     }
 } else {
     $_SESSION['error_message'] = "잘못된 접근입니다.";
-    header("Location: ../auth/register.php");
+    header("Location: /auth/register.php");
     exit;
 }

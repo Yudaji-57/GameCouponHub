@@ -12,6 +12,11 @@
     text-align: center;
 }
 
+/* custom-padding 클래스를 사용하여 padding을 2.5rem으로 설정 */
+.custom-padding {
+    padding: 2.5rem !important;
+}
+
 .input-group {
     margin-bottom: 15px;
 }
@@ -59,23 +64,31 @@
 
 .social-login {
     margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+
+/* 소셜 로그인 아이콘들을 감싸는 div */
+.social-icons {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 25px; /* 25px로 간격 설정 */
 }
 
 /* 원형 소셜 로그인 버튼 */
-.social-btn {
-    width: 50px;
-    height: 50px;
+.social-icon-btn {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     cursor: pointer;
-    font-size: 24px;
-    transition: transform 0.2s ease-in-out;
+    font-size: 30px;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+    position: relative;
 }
 
 /* 카카오 로그인 버튼 */
@@ -90,9 +103,41 @@
     color: white;
 }
 
-/* 버튼 호버 효과 */
-.social-btn:hover {
+/* 네이버 로그인 버튼 */
+.naver {
+    background-color: #03C75A; /* 네이버 색상 */
+    color: white;
+}
+
+/* 네이버 이미지 아이콘 크기 조정 */
+.social-icon-btn.naver img {
+    width: 35px;  /* 아이콘 크기를 35px로 설정 */
+    height: 35px; /* 아이콘 크기를 35px로 설정 */
+    object-fit: contain; /* 비율을 유지하며 아이콘 맞추기 */
+}
+
+/* 버튼 호버 효과: 크기 증가 및 배경색 변화 */
+.social-icon-btn:hover {
     transform: scale(1.1);
+}
+
+/* 텍스트 표시 */
+.social-icon-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+/* 마우스를 올렸을 때 텍스트가 보이도록 */
+.social-icon-btn:hover::after {
+    opacity: 1;
 }
 
 /* 반응형 스타일 */
@@ -102,7 +147,7 @@
         max-width: 350px;
     }
 
-    .social-login {
-        gap: 10px;
+    .social-icons {
+        gap: 15px;
     }
 }

@@ -36,7 +36,7 @@
                 }
                 ?>
 
-                <form action="../auth/process_forgot_password.php" method="post">
+                <form action="/auth/process_forgot_password.php" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">이메일</label>
                         <input type="email" id="email" name="email" class="form-control" required>
@@ -45,8 +45,8 @@
                 </form>
 
                 <div class="text-center mt-3">
-                    <a href="../auth/login.php">로그인</a> |
-                    <a href="../auth/register.php">회원가입</a>
+                    <a href="/auth/login.php">로그인</a> |
+                    <a href="/auth/register.php">회원가입</a>
                 </div>
             </div>
         </div>
@@ -61,6 +61,6 @@ include $rootPath . "/includes/footer.php";
 <!-- 부트스트랩 JS, Popper.js 링크 -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-<script src="/assets/js/auth.js"></script>
+
 </body>
 </html>

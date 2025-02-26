@@ -17,6 +17,8 @@
 
 <body>
     <?php
+    session_start(); // 세션 시작
+    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
     $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
 
     // 헤더
@@ -35,12 +37,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/pages/games.php">게임 목록</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pages/my_coupons.php">내 쿠폰</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pages/settings.php">설정</a>
-            </li>
+            <?php if ($isLoggedIn): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 
@@ -48,13 +52,13 @@
         <section class="col-md-6 mx-auto">
             <h1 class="text-center mb-4">쿠폰 제보</h1>
 
-<!-- 설명란 -->
-<div class="alert alert-info text-center">
-    <i class="fas fa-info-circle"></i>
-    소중한 쿠폰 제보 감사합니다! 🎉 <br>
-    관리자가 확인 후 빠르게 정상 쿠폰으로 반영하겠습니다. <br>
-    <strong>- GameCouponHub 운영팀 -</strong>
-</div>
+            <!-- 설명란 -->
+            <div class="alert alert-info text-center">
+                <i class="fas fa-info-circle"></i>
+                소중한 쿠폰 제보 감사합니다! 🎉 <br>
+                관리자가 확인 후 빠르게 정상 쿠폰으로 반영하겠습니다. <br>
+                <strong>- GameCouponHub 운영팀 -</strong>
+            </div>
 
 
             <!-- 쿠폰 제보 폼 -->
@@ -101,9 +105,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
     <script src="../assets/js/submit.js"></script>
-        <script src="../assets/js/siteTitleAndFavicon.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
 
-        <script>
+    <script>
+        function navigateTo(url) {
+            <?php if (!$isLoggedIn): ?>
+                alert("로그인 후 이용할 수 있습니다.");
+                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
+            <?php else: ?>
+                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
+            <?php endif; ?>
+        }
+
         document.title = "GameCouponHub - 쿠폰제보"; // 이 부분을 각 페이지별로 설정
     </script>
 </body>

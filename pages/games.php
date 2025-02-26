@@ -16,26 +16,30 @@
 
 <body>
     <?php
-    $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
+    session_start(); // 세션 시작
+    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
+    $rootPath = "/volume1/web/GameCouponHub";
 
     // 헤더
     include $rootPath . "/includes/header.php";
     ?>
 
-    <nav class="sidebar">
-        <ul class="nav-list">
+    <nav id="sidebar" class="sidebar">
+        <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="/pages/index.php">메인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">게임 목록</a>
+                <a class="nav-link active" href="/pages/games.php">게임 목록</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pages/my_coupons.php">내 쿠폰</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/pages/settings.php">설정</a>
-            </li>
+            <?php if ($isLoggedIn): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </nav>
 
@@ -44,7 +48,6 @@
         <p>다양한 게임에서 제공되는 공식 쿠폰을 확인하고, 쿠폰을 활용해 보세요.</p>
 
         <div class="row">
-
             <!-- 게임 1 -->
             <div class="col-md-2 col-sm-3 col-4 mb-4">
                 <div class="card">
@@ -124,8 +127,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </main>
 
@@ -142,7 +143,16 @@
     <script src="../assets/js/siteTitleAndFavicon.js"></script>
 
     <script>
-        document.title = "GameCouponHub - 게임 목록"; // 이 부분을 각 페이지별로 설정
+        function navigateTo(url) {
+            <?php if (!$isLoggedIn): ?>
+                alert("로그인 후 이용할 수 있습니다.");
+                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
+            <?php else: ?>
+                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
+            <?php endif; ?>
+        }
+
+        document.title = "GameCouponHub - 게임 목록"; // 페이지 제목 설정
     </script>
 </body>
 

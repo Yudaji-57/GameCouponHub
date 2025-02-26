@@ -1,40 +1,129 @@
 /* /assets/css/user_common.css */
+/* 사용자 페이지 공통 스타일 */
 
-/* 사이드바 스타일 */
+/* 사이드바 기본 스타일 */
 .sidebar {
     width: 250px;
     background-color: #343a40;
-    color: white;
     height: 100vh;
     position: fixed;
-    left: 0;
     top: 0;
-    padding-top: 20px;
+    left: 0;
+    transition: all 0.3s ease;
 }
 
+/* 리스트 스타일 제거 (점 없애기) */
 .nav-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.nav-item {
-    padding: 10px 20px;
+/* 사이드바 닫힘 상태 */
+.sidebar.collapsed {
+    width: 60px;
 }
 
-.nav-link {
+/* 사이드바 항목 */
+.sidebar .nav-item {
+    padding: 15px;
+}
+
+/* 사이드바 링크 스타일 */
+.sidebar .nav-link {
     color: white;
+    font-size: 18px;
     text-decoration: none;
-    display: block;
-    padding: 10px;
 }
 
-.nav-link:hover, .nav-link.active {
+/* 사이드바 링크 활성화 및 호버 스타일 */
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
     background-color: #007bff;
+    color: white;
 }
 
-/* 컨텐츠 스타일 */
+/* 사이드바 토글 버튼 */
+#sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    background-color: #343a40;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* 전체 콘텐츠 영역 조정 (사이드바와 겹치지 않도록) */
 .content {
-    margin-left: 260px;
+    margin-left: 270px; /* 사이드바 너비보다 여유 있게 설정 */
     padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* 카드 스타일 조정 */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    object-fit: cover;
+    width: 100%;
+    height: 140px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* 버튼 스타일 개선 */
+.card .btn {
+    font-size: 12px;
+    padding: 6px 10px;
+    flex: 1;
+    white-space: nowrap;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 992px) {
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    .col-md-2 {
+        flex: 0 0 33%;
+        max-width: 33%;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-2 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .col-md-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }

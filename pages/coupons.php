@@ -22,6 +22,8 @@
 
 <body>
     <?php
+    session_start(); // 세션 시작
+    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
     $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
 
     // 헤더
@@ -40,12 +42,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">게임 목록</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">내 쿠폰</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">설정</a>
-            </li>
+            <?php if ($isLoggedIn): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 
@@ -101,6 +105,15 @@
     <script src="../assets/js/siteTitleAndFavicon.js"></script>
 
     <script>
+        function navigateTo(url) {
+            <?php if (!$isLoggedIn): ?>
+                alert("로그인 후 이용할 수 있습니다.");
+                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
+            <?php else: ?>
+                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
+            <?php endif; ?>
+        }
+
         document.title = "GameCouponHub - 쿠폰리스트"; // 이 부분을 각 페이지별로 설정
     </script>
 
