@@ -24,10 +24,14 @@ if (!isset($_SESSION['user_id'])) {
 $game = $_POST['game'] ?? '';
 $coupon = $_POST['coupon'] ?? '';
 $reward = $_POST['reward'] ?? '';
-$user_id = $_POST['user_id'] ?? '';
+$issueDate = $_POST['issue_date'] ?? '';
+$expirationDate = $_POST['expiration_date'] ?? null; // 만료일은 선택 사항
+$approvalStatus = 0; // 기본값: 승인 대기 (0)
+$userId = $_POST['user_id'] ?? '';
+$couponType = $_POST['coupon_type'] ?? ''; // 쿠폰 유형 추가
 
 // 유효성 검사
-if (empty($game) || empty($coupon) || empty($reward) || empty($user_id)) {
+if (empty($game) || empty($coupon) || empty($reward) || empty($issueDate) || empty($userId) || empty($couponType)) {
     echo json_encode(['success' => false, 'message' => '모든 필드를 입력해주세요.']);
     exit();
 }
@@ -37,14 +41,18 @@ try {
     $createdAt = date('Y-m-d H:i:s');
 
     // 쿠폰 제보 데이터를 테이블에 삽입
-    $query = "INSERT INTO coupons_report (user_id, game_name, coupon_code, reward_details, created_at) 
-              VALUES (:user_id, :game, :coupon, :reward, :created_at)";
+    $query = "INSERT INTO coupons_report (user_id, game_name, coupon_code, reward_details, issue_date, expiration_date, approval_status, coupon_type, created_at) 
+              VALUES (:user_id, :game, :coupon, :reward, :issue_date, :expiration_date, :approval_status, :coupon_type, :created_at)";
     
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_STR);
     $stmt->bindParam(':game', $game, PDO::PARAM_STR);
     $stmt->bindParam(':coupon', $coupon, PDO::PARAM_STR);
     $stmt->bindParam(':reward', $reward, PDO::PARAM_STR);
+    $stmt->bindParam(':issue_date', $issueDate, PDO::PARAM_STR);
+    $stmt->bindParam(':expiration_date', $expirationDate, PDO::PARAM_STR);
+    $stmt->bindParam(':approval_status', $approvalStatus, PDO::PARAM_INT);
+    $stmt->bindParam(':coupon_type', $couponType, PDO::PARAM_STR); // 쿠폰 유형 추가
     $stmt->bindParam(':created_at', $createdAt, PDO::PARAM_STR);
     $stmt->execute();
 

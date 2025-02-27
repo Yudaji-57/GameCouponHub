@@ -29,7 +29,7 @@
         </div>
 
         <div class="container mt-5">
-          
+
             <!-- 쿠폰 등록 폼 -->
             <h3>쿠폰 등록</h3>
             <form id="couponForm" method="POST" action="../backend/admin/coupon_add.php">
@@ -69,7 +69,11 @@
                         <th>게임명</th>
                         <th>쿠폰 코드</th>
                         <th>보상 내용</th>
-                        <th>제보 날짜</th>
+                        <th>발급일</th>
+                        <th>만료일</th>
+                        <th>제보일</th>
+                        <th>승인 상태</th>
+                        <th>관리</th>
                     </tr>
                 </thead>
                 <tbody>

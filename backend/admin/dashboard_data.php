@@ -5,6 +5,8 @@ require_once "/volume1/web/GameCouponHub/backend/config/database.php"; // 데이
 
 header('Content-Type: application/json');
 
+ob_clean(); // 출력 버퍼를 클리어
+
 try {
     // 대시보드 통계 조회 (한 번의 쿼리로 처리)
     $statsQuery = "
@@ -45,23 +47,45 @@ try {
 
     // 최근 쿠폰 제보 리스트 (최대 10개)
     $reportsQuery = "
-        SELECT user_id, game_name, coupon_code, reward_details AS reward, DATE_FORMAT(created_at, '%Y-%m-%d') AS created_at 
+        SELECT user_id, game_name, coupon_code, reward_details AS reward, 
+               DATE_FORMAT(created_at, '%Y-%m-%d') AS created_at, 
+               issue_date, expiration_date, approval_status
         FROM coupons_report 
         ORDER BY created_at DESC 
         LIMIT 10
     ";
     $recentReports = $pdo->query($reportsQuery)->fetchAll(PDO::FETCH_ASSOC);
 
+    // 승인 여부 (0: 대기, 1: 승인, 2: 거절)
+    foreach ($recentReports as &$report) {
+        switch ($report['approval_status']) {
+            case 0:
+                $report['approval_status_label'] = '대기';
+                break;
+            case 1:
+                $report['approval_status_label'] = '승인';
+                break;
+            case 2:
+                $report['approval_status_label'] = '거절';
+                break;
+            default:
+                $report['approval_status_label'] = '알 수 없음';
+                break;
+        }
+    }
+
     // JSON 응답 반환
-    echo json_encode([
+    echo json_encode([ 
         "status" => "success",
-        "totalUsers" => $stats['totalUsers'],
-        "totalReports" => $stats['totalReports'],
-        "totalCoupons" => $stats['totalCoupons'],
-        "todayReports" => $stats['todayReports'],
-        "months" => $months,
-        "monthlyReports" => $monthlyReports,
-        "recentReports" => $recentReports
+        "data" => [
+            "totalUsers" => $stats['totalUsers'],
+            "totalReports" => $stats['totalReports'],
+            "totalCoupons" => $stats['totalCoupons'],
+            "todayReports" => $stats['todayReports'],
+            "months" => $months,
+            "monthlyReports" => $monthlyReports,
+            "recentReports" => $recentReports // approval_status_label이 포함된 배열 반환
+        ]
     ]);
 } catch (PDOException $e) {
     // 예외 처리: DB 오류 시 JSON 응답 반환

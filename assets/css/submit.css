@@ -81,3 +81,21 @@ button[type="submit"]:focus {
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
+/* 페이지와 body 높이를 100%로 설정 */
+html, body {
+    height: 100%; /* 페이지 전체 높이를 100%로 설정 */
+    margin: 0; /* 기본 마진 제거 */
+}
+
+/* body는 flexbox 레이아웃 사용 */
+body {
+    display: flex;
+    flex-direction: column; /* 세로로 배치 */
+}
+
+/* main 영역은 화면 크기에 맞게 늘어나도록 */
+main {
+    flex: 1; /* main 영역이 화면 크기에 맞게 확장됨 */
+    padding-bottom: 60px; /* 푸터와 겹치지 않게 여유 공간 추가 */
+}

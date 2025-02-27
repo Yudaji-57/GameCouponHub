@@ -8,11 +8,27 @@ formElement.addEventListener("submit", function (event) {
     let game = document.getElementById("game").value.trim();
     let coupon = document.getElementById("coupon").value.trim();
     let reward = document.getElementById("reward").value.trim();
-    let user_id = document.getElementById("user_id") ? document.getElementById("user_id").value.trim() : ''; // user_id도 가져오기
+    let issueDate = document.getElementById("issue_date").value.trim(); // 발급일 추가
+    let expirationDate = document.getElementById("expiration_date").value.trim(); // 만료일 추가 (선택 입력)
+    let approvalStatus = 0; // 기본값: 0 (승인 대기)
+    let userId = document.getElementById("user_id") ? document.getElementById("user_id").value.trim() : '';
+    let couponType = document.getElementById("coupon_type") ? document.getElementById("coupon_type").value.trim() : ''; // 쿠폰 유형 추가
 
     // 유효성 검사
     if (game === "" || coupon === "" || reward === "") {
         resultMessage.textContent = "게임명, 쿠폰 코드, 보상 내용을 모두 입력해주세요.";
+        resultMessage.style.color = "red";
+        return;
+    }
+
+    if (issueDate === "") {
+        resultMessage.textContent = "발급일을 입력해주세요.";
+        resultMessage.style.color = "red";
+        return;
+    }
+
+    if (couponType === "") { // 쿠폰 유형 입력값 검증
+        resultMessage.textContent = "쿠폰 유형을 선택해주세요.";
         resultMessage.style.color = "red";
         return;
     }
@@ -22,7 +38,11 @@ formElement.addEventListener("submit", function (event) {
     formData.append("game", game);
     formData.append("coupon", coupon);
     formData.append("reward", reward);
-    formData.append("user_id", user_id); // user_id도 추가
+    formData.append("issue_date", issueDate);
+    formData.append("expiration_date", expirationDate); // 선택 입력값 추가
+    formData.append("approval_status", approvalStatus); // 승인 여부 추가 (기본값 0)
+    formData.append("user_id", userId);
+    formData.append("coupon_type", couponType); // 쿠폰 유형 추가
 
     fetch("/backend/routes/submit_coupon.php", {
         method: "POST",

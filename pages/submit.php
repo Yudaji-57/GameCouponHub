@@ -1,5 +1,6 @@
 <!-- /GameCouponHub/pages/submit.php -->
-<!DOCTYPE html>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="ko">
 
 <head>
@@ -62,6 +63,7 @@
 
 
             <!-- 쿠폰 제보 폼 -->
+            <!-- 쿠폰 제보 폼 -->
             <form id="couponForm">
                 <!-- 게임명 입력 -->
                 <div class="form-group mb-3">
@@ -81,6 +83,31 @@
                     <textarea class="form-control" id="reward" name="reward" rows="4" required></textarea>
                 </div>
 
+                <!-- ✅ 발급일 입력 (필수) -->
+                <div class="form-group mb-3">
+                    <label for="issue_date">발급일 (필수):</label>
+                    <input type="date" class="form-control" id="issue_date" name="issue_date" required>
+                </div>
+
+                <!-- ✅ 만료일 입력 (선택) -->
+                <div class="form-group mb-3">
+                    <label for="expiration_date">만료일 (선택):</label>
+                    <input type="date" class="form-control" id="expiration_date" name="expiration_date">
+                </div>
+
+                <!-- 쿠폰 유형 선택 -->
+                <div class="form-group mb-3">
+                    <label for="coupon_type">쿠폰 유형:</label>
+                    <select class="form-control" id="coupon_type" name="coupon_type" required>
+                        <option value="일반">일반</option>
+                        <option value="한정">한정</option>
+                        <option value="이벤트">이벤트</option>
+                        <option value="업데이트">업데이트</option>
+                        <option value="이슈">이슈</option>
+                        <option value="핫타임">핫타임</option>                        
+                    </select>
+                </div>
+
                 <!-- 숨겨진 user_id 입력 -->
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <input type="hidden" id="user_id" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
@@ -94,9 +121,11 @@
         </section>
     </main>
 
+
     <?php
     // 푸터
     include $rootPath . "/includes/footer.php";
+    
     ?>
 
 

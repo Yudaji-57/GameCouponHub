@@ -1,5 +1,5 @@
 <?php
-// /backend/admin/coupon_add_and_delete_report.php
+// /backend/admin/coupon_add_and_update_report_status.php
 require_once "/volume1/web/GameCouponHub/backend/config/database.php"; // 데이터베이스 연결
 
 // POST 요청으로 받은 데이터 처리
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $expirationDate = $_POST['expiration_date'];  // 만료일 처리
     $couponType = $_POST['coupon_type'];
     
-    // 전달받은 report_id (제보 삭제용)
+    // 전달받은 report_id (제보 상태 업데이트용)
     $reportId = $_POST['report_id'];
 
     try {
@@ -28,17 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':coupon_type', $couponType);
         $stmt->execute();
 
-        // 2. 제보 삭제
-        $sqlDelete = "DELETE FROM coupons_report WHERE `index` = :report_id";
-        $stmtDelete = $pdo->prepare($sqlDelete);
-        $stmtDelete->bindParam(':report_id', $reportId, PDO::PARAM_INT);
-        $stmtDelete->execute();
+        // 2. 제보의 승인 상태 업데이트
+        // 제보 승인 상태는 1 (승인)로 설정
+        $sqlUpdate = "UPDATE coupons_report SET approval_status = 1 WHERE `index` = :report_id";
+        $stmtUpdate = $pdo->prepare($sqlUpdate);
+        $stmtUpdate->bindParam(':report_id', $reportId, PDO::PARAM_INT);
+        $stmtUpdate->execute();
 
-        // 삭제된 행의 수 확인
-        if ($stmtDelete->rowCount() > 0) {
-            echo json_encode(['success' => true, 'message' => '쿠폰 등록 및 제보 삭제 완료']);
+        // 상태 업데이트된 행의 수 확인
+        if ($stmtUpdate->rowCount() > 0) {
+            echo json_encode(['success' => true, 'message' => '쿠폰 등록 및 제보 승인 완료']);
         } else {
-            echo json_encode(['success' => false, 'message' => '제보 삭제 실패: 해당 제보를 찾을 수 없습니다.']);
+            echo json_encode(['success' => false, 'message' => '제보 승인 실패: 해당 제보를 찾을 수 없습니다.']);
         }
     } catch (Exception $e) {
         // 오류 처리
