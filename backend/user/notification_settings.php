@@ -20,4 +20,5 @@ $stmt->execute([
 
 // 성공 응답
 echo json_encode(['success' => true, 'message' => '알림 설정이 성공적으로 업데이트되었습니다.']);
+
 ?>

@@ -48,11 +48,11 @@ if (isset($data['type'])) {
 
         echo json_encode(['success' => true, 'message' => '이메일이 성공적으로 업데이트되었습니다.']);
 
-    // 비밀번호 변경 처리
+        // 비밀번호 변경 처리
     } elseif ($data['type'] == 'password') {
         $current_password = $data['currentPassword'];
         $new_password = $data['newPassword'];
-        
+
         // 비밀번호가 유효한지 검사
         if (strlen($new_password) < 8) {
             echo json_encode(['success' => false, 'message' => '비밀번호는 최소 8자 이상이어야 합니다.']);
@@ -80,7 +80,7 @@ if (isset($data['type'])) {
             echo json_encode(['success' => false, 'message' => '현재 비밀번호가 일치하지 않습니다.']);
         }
 
-    // 닉네임 변경 처리
+        // 닉네임 변경 처리
     } elseif ($data['type'] == 'nickname') {
         $new_nickname = $data['newNickname'];
 
@@ -104,4 +104,6 @@ if (isset($data['type'])) {
 } else {
     echo json_encode(['success' => false, 'message' => '요청 타입이 없습니다.']);
 }
+
+
 ?>
