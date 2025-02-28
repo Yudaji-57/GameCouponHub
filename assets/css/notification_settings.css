@@ -1,0 +1,100 @@
+/* /assets/css/notification_settings.css */
+
+/* 전체 레이아웃 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    padding-top: 70px; /* 헤더 높이를 고려한 여백 추가 */
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    background-color: #343a40;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    padding-top: 20px;
+}
+
+.sidebar .nav-item {
+    padding: 10px 20px;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* 컨텐츠 영역 */
+.container {
+    margin-left: 260px; /* 사이드바 너비만큼 여백 추가 */
+    padding: 20px;
+}
+
+/* 제목 스타일 */
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 폼 체크박스 스타일 */
+.form-check {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.form-check-label {
+    font-size: 16px;
+    color: #333;
+}
+
+/* 버튼 스타일 */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* 알림 메시지 스타일 */
+#message {
+    font-size: 16px;
+    color: green;
+    margin-bottom: 20px;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding-top: 10px;
+    }
+
+    .container {
+        margin-left: 0;
+    }
+
+    /* 버튼 크기 조정 */
+    .btn-primary {
+        width: 100%;
+    }
+}
