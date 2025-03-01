@@ -3,6 +3,7 @@
 
 # 데이터베이스 연결문 파일 (민감한 데이터베이스 정보 포함)
 backend/config/database.php
+.sql
 
 # PHP Composer 의존성 파일 (디렉토리에서 제외할 경우)
 vendor/
