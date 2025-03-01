@@ -1,0 +1,90 @@
+/* /assets/css/point_history.css */
+
+/* 전체 컨테이너 스타일 */
+.container {
+    margin-left: 270px;  /* 사이드바 넓이를 고려한 여백 */
+    padding: 20px;
+}
+
+/* 테이블 스타일 */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* 테이블 헤더 스타일 */
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* 알림 메시지 스타일 */
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* 페이지 제목 스타일 */
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+    background-color: #343a40;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    padding-top: 20px;
+}
+
+.sidebar .nav-item {
+    padding: 10px 20px;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* 반응형 웹을 위한 스타일 */
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding-top: 10px;
+    }
+
+    .sidebar .nav-item {
+        padding: 8px 10px;
+    }
+}

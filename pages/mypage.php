@@ -17,7 +17,11 @@
 <body>
     <?php
     session_start();
-    if (!isset($_SESSION['user_id'])) {
+
+    // 로그인 상태 체크
+    $isLoggedIn = isset($_SESSION['user_id']); // 로그인된 상태인지 확인
+
+    if (!$isLoggedIn) {
         header("Location: ../auth/login.php");
         exit();
     }
@@ -30,12 +34,10 @@
     include $rootPath . "/backend/config/database.php";
 
     // 사용자 정보와 포인트 정보 조인하여 가져오기
-    $stmt = $pdo->prepare("
-SELECT u.user_index, u.user_id, u.nickname, p.available_points, p.expiring_points
-FROM users u
-LEFT JOIN user_points p ON u.user_index = p.user_id
-WHERE u.user_id = :userId
-");
+    $stmt = $pdo->prepare("SELECT u.user_index, u.user_id, u.nickname, p.available_points, p.expiring_points
+                       FROM users u
+                       LEFT JOIN user_points p ON u.user_index = p.user_id
+                       WHERE u.user_id = :userId");
 
     $stmt->bindParam(':userId', $userId, PDO::PARAM_STR); // user_id를 문자열로 처리
     $stmt->execute();
@@ -44,8 +46,6 @@ WHERE u.user_id = :userId
     if ($userData) {
         // 사용자 정보와 포인트 정보 출력
         $nickname = htmlspecialchars($userData['nickname']);
-
-        // 포인트가 없으면 0으로 설정하고 천 단위 구분자와 "P" 단위 추가
         $availablePoints = isset($userData['available_points']) ? number_format($userData['available_points']) . 'P' : '0P';
         $expiringPoints = isset($userData['expiring_points']) ? number_format($userData['expiring_points']) . 'P' : '0P';
     } else {
@@ -54,17 +54,26 @@ WHERE u.user_id = :userId
     }
     ?>
 
-
-
-
+    <!-- 사이드바 -->
     <nav id="sidebar" class="sidebar">
         <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" href="../pages/index.php">메인</a></li>
-            <li class="nav-item"><a class="nav-link" href="../pages/games.php">게임 목록</a></li>
-            <li class="nav-item"><a class="nav-link active" href="../pages/mypage.php">마이페이지</a></li>
-            <li class="nav-item"><a class="nav-link" href="../pages/settings.php">설정</a></li>
+            <li class="nav-item">
+                <a class="nav-link " href="../pages/index.php">메인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+            </li>
+            <?php if ($isLoggedIn): ?>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                </li>
+            <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link" href="../pages/settings.php">설정</a>
+            </li>
         </ul>
     </nav>
+
 
     <main class="content container mt-4">
         <h2>마이페이지</h2>
@@ -168,6 +177,17 @@ WHERE u.user_id = :userId
                 console.error("복사 실패: ", err);
             });
         }
+
+        // 로그인 상태에 따라 이동
+        function navigateTo(url) {
+            <?php if (!$isLoggedIn): ?>
+                alert("로그인 후 이용할 수 있습니다.");
+                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
+            <?php else: ?>
+                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
+            <?php endif; ?>
+        }
+
 
         document.title = "GameCouponHub - 마이페이지";
     </script>

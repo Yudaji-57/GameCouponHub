@@ -46,7 +46,7 @@
                 </li>                
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link active" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                <a class="nav-link active" href="pages/settings.php">설정</a>
             </li>
         </ul>
     </div>

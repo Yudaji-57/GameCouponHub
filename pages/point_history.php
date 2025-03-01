@@ -1,0 +1,116 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/user_common.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/point_history.css">
+    <title>포인트 사용 내역</title>
+</head>
+
+<body>
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
+
+if (!$isLoggedIn) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
+$userId = $_SESSION['user_id']; // 로그인한 사용자의 ID
+
+// 데이터베이스 연결
+$rootPath = "/volume1/web/GameCouponHub";
+include $rootPath . "/includes/header.php";
+include $rootPath . "/backend/config/database.php";
+
+// 사용자 포인트 사용 내역을 가져오기 위한 쿼리
+$stmt = $pdo->prepare("
+    SELECT ph.history_id, ph.amount, ph.description, ph.date
+    FROM point_history ph
+    WHERE ph.user_id = :userId
+    ORDER BY ph.date DESC
+");
+$stmt->bindParam(':userId', $userId, PDO::PARAM_STR);
+$stmt->execute();
+$historyData = $stmt->fetchAll();
+
+if (!$historyData) {
+    $message = "포인트 사용 내역이 없습니다.";
+}
+?>
+    
+
+    <!-- 사이드바 -->
+    <nav id="sidebar" class="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="../pages/index.php">메인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+            </li>
+            <?php if ($isLoggedIn): ?>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                </li>
+            <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link" href="../pages/settings.php">설정</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="container mt-4">
+    <h2>포인트 사용 내역</h2>
+
+    <?php if (isset($message)): ?>
+        <div class="alert alert-info">
+            <?= htmlspecialchars($message) ?>
+        </div>
+    <?php else: ?>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>내역</th>
+                        <th>사용 포인트</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($historyData as $history): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($history['date']) ?></td>
+                            <td><?= htmlspecialchars($history['description']) ?></td>
+                            <td><?= number_format($history['amount']) ?>P</td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php endif; ?>
+</main>
+
+    <?php include $rootPath . "/includes/footer.php"; ?>
+    <script>
+        // navigateTo 함수는 PHP에서 전달된 로그인 상태에 따라 다르게 동작
+        function navigateTo(url) {
+            <?php if (!$isLoggedIn): ?>
+                alert("로그인 후 이용할 수 있습니다.");
+                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
+            <?php else: ?>
+                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
+            <?php endif; ?>
+        }
+
+        // 페이지마다 타이틀을 설정하는 코드
+        document.title = "GameCouponHub - 포인트내역"; // 이 부분을 각 페이지별로 설정
+    </script>
+</body>
+
+</html>
