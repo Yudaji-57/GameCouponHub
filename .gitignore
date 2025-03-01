@@ -3,7 +3,6 @@
 
 # 데이터베이스 연결문 파일 (민감한 데이터베이스 정보 포함)
 backend/config/database.php
-.sql
 
 # PHP Composer 의존성 파일 (디렉토리에서 제외할 경우)
 vendor/
@@ -11,3 +10,26 @@ vendor/
 # 운영체제에 따른 빌드/캐시 파일들
 .DS_Store
 Thumbs.db
+
+# IDE 관련 파일들
+.idea/
+.vscode/
+
+# Node.js 관련 파일들 (필요시 추가)
+node_modules/
+
+# Python 관련 파일들 (필요시 추가)
+__pycache__/
+*.pyc
+
+# 빌드/배포 관련 파일들
+dist/
+build/
+
+# 로그 파일
+*.log
+
+# 데이터베이스 백업
+*.bak
+*.sql
+*.dmp
