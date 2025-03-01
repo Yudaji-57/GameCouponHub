@@ -35,62 +35,62 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="../pages/index.php">메인</a>
+                <a class="nav-link" href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/pages/games.php">게임 목록</a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
-                </li>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                </li>                
             <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link active" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+            </li>
         </ul>
     </div>
 
-        <div class="container mt-5">
-            <h2>알림 설정</h2>
-            <div id="message"></div>
-            <form id="notification-form">
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="email_notifications" name="email_notifications">
-                    <label class="form-check-label" for="email_notifications">이메일 알림 수신</label>
-                </div>
-                <div class="form-check mt-3">
-                    <input type="checkbox" class="form-check-input" id="push_notifications" name="push_notifications">
-                    <label class="form-check-label" for="push_notifications">푸시 알림 수신</label>
-                </div>
-                <button type="submit" class="btn btn-primary mt-3">알림 설정 변경</button>
-            </form>
-        </div>
-        <?php
-        // 푸터
-        include $rootPath . "/includes/footer.php";
-        ?>
-        <!-- 부트스트랩 JS, Popper.js 링크 -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <div class="container mt-5">
+        <h2>알림 설정</h2>
+        <div id="message"></div>
+        <form id="notification-form">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="email_notifications" name="email_notifications">
+                <label class="form-check-label" for="email_notifications">이메일 알림 수신</label>
+            </div>
+            <div class="form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="push_notifications" name="push_notifications">
+                <label class="form-check-label" for="push_notifications">푸시 알림 수신</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">알림 설정 변경</button>
+        </form>
+    </div>
+    <?php
+    // 푸터
+    include $rootPath . "/includes/footer.php";
+    ?>
+    <!-- 부트스트랩 JS, Popper.js 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-        <!-- 공통 JS 파일 링크 -->
-        <script src="../assets/js/common.js"></script>
-        <script src="../assets/js/siteTitleAndFavicon.js"></script>
-        <script>
-            // navigateTo 함수는 PHP에서 전달된 로그인 상태에 따라 다르게 동작
-            function navigateTo(url) {
-                <?php if (!$isLoggedIn): ?>
-                    alert("로그인 후 이용할 수 있습니다.");
-                    window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
-                <?php else: ?>
-                    window.location.href = url; // 로그인된 경우 해당 페이지로 이동
-                <?php endif; ?>
-            }
+    <!-- 공통 JS 파일 링크 -->
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+    <script>
+        // navigateTo 함수는 PHP에서 전달된 로그인 상태에 따라 다르게 동작
+        function navigateTo(url) {
+            <?php if (!$isLoggedIn): ?>
+                alert("로그인 후 이용할 수 있습니다.");
+                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
+            <?php else: ?>
+                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
+            <?php endif; ?>
+        }
 
-            // 페이지마다 타이틀을 설정하는 코드
-            document.title = "GameCouponHub - 알림설정"; // 이 부분을 각 페이지별로 설정
-        </script>
+        // 페이지마다 타이틀을 설정하는 코드
+        document.title = "GameCouponHub - 알림설정"; // 이 부분을 각 페이지별로 설정
+    </script>
 </body>
 
 </html>

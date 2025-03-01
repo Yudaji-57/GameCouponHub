@@ -1,6 +1,6 @@
 <!-- /GameCouponHub/index.php -->
 <!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="ko">
 
 <head>
@@ -24,27 +24,24 @@
     ?>
 
     <!-- 사이드바 -->
-    <div id="sidebar" class="sidebar">
-        <button id="sidebar-toggle" class="btn btn-dark">
-            <i id="toggle-icon" class="fas fa-chevron-left"></i>
-        </button>
+    <nav id="sidebar" class="sidebar">
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link active" href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/games.php">게임 목록</a>
+                <a class="nav-link" href="../pages/games.php">게임 목록</a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
                 </li>
             <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link" href="../pages/settings.php">설정</a>설정</a>
+            </li>
         </ul>
-    </div>
+    </nav>
 
     <!-- 메인 콘텐츠 -->
     <div class="container mt-4">
@@ -82,7 +79,7 @@
                 window.location.href = url; // 로그인된 경우 해당 페이지로 이동
             <?php endif; ?>
         }
-        
+
         // 페이지마다 타이틀을 설정하는 코드
         document.title = "GameCouponHub - 메인페이지"; // 이 부분을 각 페이지별로 설정
     </script>

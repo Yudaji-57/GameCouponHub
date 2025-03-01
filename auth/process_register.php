@@ -4,7 +4,6 @@ session_start();
 // database.php 경로 확인 후 올바르게 수정하세요
 require_once "/volume1/web/GameCouponHub/backend/config/database.php"; // 올바른 경로
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // 입력값 받기
     $username = trim($_POST['username']);
@@ -46,6 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
+        // 회원가입 후 100포인트 추가
+        // 방금 가입한 사용자의 user_id 가져오기
+        $lastInsertId = $pdo->lastInsertId();
+
+        // 100포인트를 user_points 테이블에 추가
+        $stmt = $pdo->prepare("INSERT INTO user_points (user_id, available_points) VALUES (:user_id, 100)");
+        $stmt->bindParam(':user_id', $lastInsertId);
+        $stmt->execute();
+
         // 회원가입 성공 후 로그인 페이지로 리디렉션
         $_SESSION['success_message'] = "회원가입이 완료되었습니다. 로그인 해주세요.";
         header("Location: ../auth/login.php");
@@ -61,3 +69,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: ../auth/register.php");
     exit;
 }
+?>

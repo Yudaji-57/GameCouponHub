@@ -28,27 +28,24 @@
     ?>
 
     <!-- 사이드바 -->
-    <div id="sidebar" class="sidebar">
-        <button id="sidebar-toggle" class="btn btn-dark">
-            <i id="toggle-icon" class="fas fa-chevron-left"></i>
-        </button>
+    <nav id="sidebar" class="sidebar">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="../pages/index.php">메인</a>
+                <a class="nav-link" href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/games.php">게임 목록</a>
+                <a class="nav-link" href="../pages/games.php">게임 목록</a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/my_coupons.php')">내 쿠폰</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('/pages/settings.php')">설정</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
                 </li>
             <?php endif; ?>
+            <li class="nav-item">
+                <a class="nav-link" href="../pages/settings.php">설정</a>
+            </li>
         </ul>
-    </div>
+    </nav>
 
     <div class="container mt-5">
         <h2>프로필 설정</h2>
@@ -111,7 +108,7 @@
                     <div class="form-group">
                         <label for="current-nickname">현재 닉네임</label>
                         <!-- 현재 닉네임을 표시하고, 변경할 수 있도록 수정 -->
-                        <input type="text" class="form-control" id="current-nickname" name="current-nickname" value="<?= $currentNickname ?>" required readonly>
+                        <input type="text" class="form-control" id="current-nickname" name="current-nickname" required readonly>
                     </div>
                     <div class="form-group">
                         <label for="new-nickname">새 닉네임</label>

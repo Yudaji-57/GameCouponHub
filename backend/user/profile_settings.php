@@ -28,6 +28,7 @@ if ($data['type'] == 'get_nickname') {
     exit;
 }
 
+
 if (isset($data['type'])) {
     // 이메일 변경 처리
     if ($data['type'] == 'email') {

@@ -4,7 +4,6 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
-    padding-top: 70px; /* 헤더 높이를 고려한 여백 추가 */
 }
 
 /* 사이드바 스타일 */
