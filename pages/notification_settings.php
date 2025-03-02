@@ -28,6 +28,7 @@
     // 헤더
     include $rootPath . "/includes/header.php";
     ?>
+
     <!-- 사이드바 -->
     <div id="sidebar" class="sidebar">
         <button id="sidebar-toggle" class="btn btn-dark">
@@ -38,15 +39,15 @@
                 <a class="nav-link" href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pages/games.php">게임 목록</a>
+                <a class="nav-link" href="../pages/games.php">게임 목록</a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
-                </li>                
+                </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link active" href="pages/settings.php">설정</a>
+                <a class="nav-link active" href="../pages/settings.php">설정</a>
             </li>
         </ul>
     </div>

@@ -46,7 +46,10 @@ if (!$historyData) {
     
 
     <!-- 사이드바 -->
-    <nav id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar">
+        <button id="sidebar-toggle" class="btn btn-dark">
+            <i id="toggle-icon" class="fas fa-chevron-left"></i>
+        </button>
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="../pages/index.php">메인</a>
@@ -63,7 +66,7 @@ if (!$historyData) {
                 <a class="nav-link" href="../pages/settings.php">설정</a>
             </li>
         </ul>
-    </nav>
+    </div>
 
     <main class="container mt-4">
     <h2>포인트 사용 내역</h2>

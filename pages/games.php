@@ -25,10 +25,14 @@
     include $rootPath . "/includes/header.php";
     ?>
 
-    <nav id="sidebar" class="sidebar">
+    <!-- 사이드바 -->
+    <div id="sidebar" class="sidebar">
+        <button id="sidebar-toggle" class="btn btn-dark">
+            <i id="toggle-icon" class="fas fa-chevron-left"></i>
+        </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link " href="../pages/index.php">메인</a>
+                <a class="nav-link" href="../pages/index.php">메인</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="../pages/games.php">게임 목록</a>
@@ -42,7 +46,7 @@
                 <a class="nav-link" href="../pages/settings.php">설정</a>
             </li>
         </ul>
-    </nav>
+    </div>
 
     <main class="content">
         <h1>공식 쿠폰 제공 게임 목록</h1>
