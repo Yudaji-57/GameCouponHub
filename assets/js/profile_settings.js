@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const emailForm = document.getElementById("email-form");
     const passwordForm = document.getElementById("password-form");
     const nicknameForm = document.getElementById("nickname-form");
@@ -17,9 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(callback)
-        .catch(() => showMessage('danger', '서버 오류가 발생했습니다.'));
+            .then(response => response.json())
+            .then(callback)
+            .catch(() => showMessage('danger', '서버 오류가 발생했습니다.'));
     }
 
     // 페이지 로드 시 닉네임 불러오기
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 이메일 변경 처리
     if (emailForm) {
-        emailForm.addEventListener("submit", function(event) {
+        emailForm.addEventListener("submit", function (event) {
             event.preventDefault();
             const currentEmail = document.getElementById("current-email").value;
             const newEmail = document.getElementById("new-email").value;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 비밀번호 변경 처리
     if (passwordForm) {
-        passwordForm.addEventListener("submit", function(event) {
+        passwordForm.addEventListener("submit", function (event) {
             event.preventDefault();
             const currentPassword = document.getElementById("current-password").value;
             const newPassword = document.getElementById("new-password").value;
@@ -75,27 +75,40 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 닉네임 변경 처리
+    // 닉네임 폼 유효성 검사 함수
+    function validateNicknameForm() {
+        const newNickname = document.getElementById("new-nickname").value;
+
+        // 닉네임 길이 검사
+        if (newNickname.length < 3) {
+            showMessage('danger', '닉네임은 최소 3자 이상이어야 합니다.');
+            return false; // 폼 제출을 방지
+        }
+
+        return true; // 폼을 정상적으로 제출
+    }
+
+    // 닉네임 폼 제출 처리
     if (nicknameForm) {
-        nicknameForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-            const newNickname = document.getElementById("new-nickname").value;
+        nicknameForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // 기본 제출 방지
 
-            if (newNickname.length < 3) {
-                showMessage('danger', '닉네임은 최소 3자 이상이어야 합니다.');
-                return;
+            // 폼 유효성 검사
+            if (validateNicknameForm()) {
+                const newNickname = document.getElementById("new-nickname").value;
+
+                sendRequest({ type: 'nickname', newNickname }, (data) => {
+                    if (data.success) {
+                        showMessage('success', data.message);
+                        nicknameDisplay.value = newNickname; // 닉네임 필드 업데이트
+                    } else {
+                        showMessage('danger', data.message);
+                    }
+                });
             }
-
-            sendRequest({ type: 'nickname', newNickname }, (data) => {
-                if (data.success) {
-                    showMessage('success', data.message);
-                    nicknameDisplay.value = newNickname; // 닉네임 필드 업데이트
-                } else {
-                    showMessage('danger', data.message);
-                }
-            });
         });
     }
+
 
     // 이메일 유효성 검사
     function validateEmail(email) {

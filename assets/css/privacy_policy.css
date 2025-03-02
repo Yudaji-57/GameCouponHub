@@ -1,0 +1,42 @@
+/* /assets/css/privacy_policy.css */
+
+/* 페이지 레이아웃 */
+.container {
+    margin-top: 50px;
+}
+
+/* 카드 스타일 */
+.card {
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.card h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.card h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #555;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* 링크 스타일 */
+.card .text-center a {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.card .text-center a:hover {
+    text-decoration: underline;
+}

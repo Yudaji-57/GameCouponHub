@@ -51,7 +51,7 @@
         </ul>
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-4">
         <h2>알림 설정</h2>
         <div id="message"></div>
         <form id="notification-form">

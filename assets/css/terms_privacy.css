@@ -1,0 +1,101 @@
+/* terms_privacy.css */
+
+/* 모달 전체 스타일 */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+/* 헤더 스타일 */
+.modal-header {
+    background: #007bff;
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 15px;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* 닫기 버튼 스타일 */
+.btn-close {
+    filter: invert(1); /* 흰색으로 변경 */
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* 본문 스타일 */
+.modal-body {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    max-height: 500px;
+    overflow-y: auto; /* 스크롤 자동 적용 */
+}
+
+/* 제목 스타일 */
+.modal-body h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #343a40;
+}
+
+.modal-body h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #007bff;
+}
+
+/* 본문 텍스트 */
+.modal-body p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* 푸터 스타일 */
+.modal-footer {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 버튼 스타일 */
+.modal-footer .btn {
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.modal-footer .btn-secondary {
+    background: #6c757d;
+    border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* 추가: 넓은 모달을 원하면 modal-lg 적용 */
+.modal-lg {
+    max-width: 800px; /* 기본보다 넓게 설정 */
+}
+
+/* 모바일 대응 */
+@media (max-width: 576px) {
+    .modal-lg {
+        max-width: 95%; /* 모바일에서는 최대 너비 조정 */
+    }
+}

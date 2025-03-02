@@ -46,7 +46,7 @@
         </ul>
     </nav>
 
-    <main class="container mt-5">
+    <main class="container mt-4">
         <section class="col-md-6 mx-auto">
             <h1 class="text-center mb-4">쿠폰 제보</h1>
 

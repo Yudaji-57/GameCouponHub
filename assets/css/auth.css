@@ -1,10 +1,15 @@
 /* /assets/css/auth.css */
+
+/* 페이지 전체 하단 여백 추가 */
+body {
+    padding-bottom: 60px; /* 전체 하단 여백 60px 추가 */
+}
 /* 로그인 페이지 스타일 */
 
 .login-container {
     width: 100%;
     max-width: 400px;
-    margin: 50px auto;
+    margin: 50px auto 80px; /* 하단 여백 80px 추가 */
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

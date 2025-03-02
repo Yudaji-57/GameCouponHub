@@ -12,11 +12,11 @@ body {
 
 /* 헤더 스타일 */
 header.coupons-header {
-    background-color: #212529 !important; /* 네비게이션 배경색 고정 */
+    background-color: #212529; /* 네비게이션 배경색 */
     color: #fff;
     padding: 20px 40px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 효과 */
-    border-bottom: 3px solid #3498db; /* 헤더 아래에 강조된 경계선 추가 */
+    border-bottom: 3px solid #3498db; /* 헤더 아래에 강조된 경계선 */
 }
 
 header.coupons-header .container {
@@ -29,8 +29,8 @@ header.coupons-header h1 {
     font-size: 32px;
     margin: 0;
     text-align: left;
-    letter-spacing: 2px; /* 글자 간격을 조금 넓게 */
-    text-transform: uppercase; /* 대문자 변환 */
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 header.coupons-header nav {
@@ -52,14 +52,14 @@ header.coupons-header nav ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
-    font-weight: 500; /* 글자 두께 강조 */
-    text-transform: uppercase; /* 메뉴 항목 대문자 */
+    font-weight: 500;
+    text-transform: uppercase;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 header.coupons-header nav ul li a:hover {
     text-decoration: underline;
-    color: #f1c40f !important; /* 마우스 올릴 때 노란색 */
+    color: #f1c40f;
 }
 
 /* 접기/펼치기 버튼 */
@@ -86,13 +86,12 @@ footer {
     background-color: #2c3e50;
     color: #fff;
     text-align: center;
-    padding: 10px 20px; /* 상단/하단 패딩을 줄여서 높이를 줄임 */
+    padding: 10px 20px;
     position: fixed;
     bottom: 0;
     width: 100%;
-    font-size: 14px; /* 글자 크기도 줄여서 높이 축소 */
+    font-size: 14px;
 }
-
 
 footer a {
     color: #fff;
@@ -106,39 +105,11 @@ footer a:hover {
 
 /* nav 배경 고정 */
 .coupons-header nav {
-    background-color: #212529 !important; /* 네비게이션 배경색 고정 */
-    position: sticky; /* 페이지 상단에 고정 */
-    top: 0; /* 상단 고정 */
-    z-index: 1000; /* 다른 요소 위에 오도록 */
+    background-color: #212529;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-
-/* nav 안의 ul, li 스타일 */
-.coupons-header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.coupons-header nav ul li {
-    display: inline;
-    margin-left: 20px;
-}
-
-.coupons-header nav ul li a {
-    color: #fff !important; /* 강제 적용 */
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500; /* 글자 두께 강조 */
-    text-transform: uppercase; /* 메뉴 항목 대문자 */
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.coupons-header nav ul li a:hover {
-    text-decoration: underline;
-    color: #f1c40f !important; /* 마우스 올릴 때 노란색 */
-}
-
-/* /assets/css/common.css */
 
 /* 사이드바 기본 스타일 */
 .sidebar {
@@ -153,7 +124,7 @@ footer a:hover {
 
 /* 사이드바 닫힘 상태 */
 .sidebar.collapsed {
-    width: 60px; /* 접었을 때 사이드바의 너비 */
+    width: 60px;
 }
 
 /* 사이드바 항목 */
@@ -178,7 +149,7 @@ footer a:hover {
 #sidebar-toggle {
     position: absolute;
     top: 20px;
-    right: -35px; /* 토글 버튼을 사이드바 밖에 위치시킴 */
+    right: -35px;
     background-color: #343a40;
     border: none;
     color: white;
@@ -190,11 +161,30 @@ footer a:hover {
 
 /* 사이드바 내부 내용 마진 조정 */
 .container {
-    margin-left: 260px; /* 사이드바의 너비를 제외한 마진 */
+    margin-left: 260px;
     transition: margin-left 0.3s ease;
 }
 
 /* 사이드바 접을 때 콘텐츠 마진 조정 */
 .sidebar.collapsed + .container {
     margin-left: 70px;
+}
+
+/* 모바일 대응: 사이드바 크기 조정 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar.collapsed {
+        width: 60px;
+    }
+
+    .container {
+        margin-left: 60px;
+    }
+
+    .sidebar.collapsed + .container {
+        margin-left: 70px;
+    }
 }

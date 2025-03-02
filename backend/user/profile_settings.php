@@ -28,7 +28,6 @@ if ($data['type'] == 'get_nickname') {
     exit;
 }
 
-
 if (isset($data['type'])) {
     // 이메일 변경 처리
     if ($data['type'] == 'email') {
@@ -91,8 +90,40 @@ if (isset($data['type'])) {
             exit;
         }
 
+        // 닉네임 변경 여부 체크: 마지막 변경일 가져오기
+        $stmt = $pdo->prepare("SELECT nickname_changed_at FROM users WHERE user_id = :user_id");
+        $stmt->execute(['user_id' => $user_id]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            // 마지막 닉네임 변경 날짜
+            $nickname_changed_at = $user['nickname_changed_at'];
+
+            // 닉네임 변경 날짜가 없으면, 처음 변경 처리
+            if (!$nickname_changed_at) {
+                $nickname_changed_at = date('Y-m-d');
+            }
+
+            // 현재 날짜
+            $today = date('Y-m-d');
+            $last_changed_date = new DateTime($nickname_changed_at);
+            $today_date = new DateTime($today);
+            $interval = $last_changed_date->diff($today_date);
+            $days_left = 30 - $interval->days;
+
+            // 30일이 지나지 않았다면 변경 불가
+            if ($days_left > 0) {
+                echo json_encode([
+                    'success' => false,
+                    'message' => "닉네임 변경은 $days_left 일 후에 가능합니다.",
+                    'daysLeft' => $days_left
+                ]);
+                exit;
+            }
+        }
+
         // 닉네임 업데이트 쿼리
-        $stmt = $pdo->prepare("UPDATE users SET nickname = :nickname WHERE user_id = :user_id");
+        $stmt = $pdo->prepare("UPDATE users SET nickname = :nickname, nickname_changed_at = CURDATE() WHERE user_id = :user_id");
         $stmt->execute([
             'nickname' => $new_nickname,
             'user_id' => $user_id
@@ -105,6 +136,4 @@ if (isset($data['type'])) {
 } else {
     echo json_encode(['success' => false, 'message' => '요청 타입이 없습니다.']);
 }
-
-
 ?>

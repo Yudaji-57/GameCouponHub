@@ -47,7 +47,7 @@
         </ul>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container mt-4">
         <h2>프로필 설정</h2>
         <div id="message"></div>
 
@@ -101,13 +101,15 @@
                 </form>
             </div>
 
-            <!-- 닉네임 변경 폼 -->
+            <!-- 닉네임 변경 가능 여부 -->
             <div class="tab-pane fade" id="nickname-section" role="tabpanel" aria-labelledby="nickname-tab">
                 <h3>닉네임 변경</h3>
+                <p id="nickname-status">
+                    <!-- 여기서 닉네임 변경 가능 여부 및 남은 일수를 표시 -->
+                </p>
                 <form id="nickname-form" onsubmit="return validateNicknameForm()">
                     <div class="form-group">
                         <label for="current-nickname">현재 닉네임</label>
-                        <!-- 현재 닉네임을 표시하고, 변경할 수 있도록 수정 -->
                         <input type="text" class="form-control" id="current-nickname" name="current-nickname" required readonly>
                     </div>
                     <div class="form-group">
@@ -131,6 +133,17 @@
     <script src="../assets/js/siteTitleAndFavicon.js"></script>
 
     <script>
+        // 남은 일수를 출력하는 로직
+        document.addEventListener('DOMContentLoaded', function() {
+            var remainingDays = <?php echo isset($remainingDays) ? $remainingDays : 0; ?>;
+
+            var statusText = remainingDays > 0 ?
+                "닉네임은 변경한 후 30일이 지나야 다시 변경할 수 있습니다. 남은 일수: " + remainingDays + "일" :
+                "닉네임을 변경할 수 있습니다.";
+
+            document.getElementById('nickname-status').textContent = statusText;
+        });
+
         // 로그인 상태에 따라 이동
         function navigateTo(url) {
             <?php if (!$isLoggedIn): ?>

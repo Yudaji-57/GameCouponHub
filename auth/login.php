@@ -54,7 +54,7 @@
     </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
                 <div class="card custom-padding p-4">
