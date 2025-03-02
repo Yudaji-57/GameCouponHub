@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="../assets/css/terms_of_service.css">
     <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
     <link rel="stylesheet" href="../assets/css/auth.css">
-    
+    <!-- 부트스트랩 JS, Popper.js 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="../assets/js/terms_privacy.js"></script>
 </head>
 
 <body>
@@ -104,7 +107,7 @@
 
                         <!-- 이용약관 모달 -->
                         <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg"> <!-- ✅ modal-lg 추가 -->
+                            <div class="modal-dialog modal-lg" inert> <!-- inert 속성 추가 -->
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="termsModalLabel">이용약관</h5>
@@ -142,7 +145,7 @@
 
                         <!-- 개인정보 처리방침 모달 -->
                         <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg"> <!-- ✅ modal-lg 추가 -->
+                            <div class="modal-dialog modal-lg" inert> <!-- inert 속성 추가 -->
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="privacyModalLabel">개인정보 처리방침</h5>
@@ -175,6 +178,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <button type="submit" class="btn btn-primary w-100">회원가입</button>
                     </form>
 
@@ -191,11 +195,7 @@
     include $rootPath . "/includes/footer.php";
     ?>
 
-    <!-- 부트스트랩 JS, Popper.js 링크 -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="/assets/js/terms_privacy.js"></script>
-    <script src="/assets/js/auth.js"></script>
+
     <script>
         function navigateTo(url) {
             <?php if (!$isLoggedIn): ?>
