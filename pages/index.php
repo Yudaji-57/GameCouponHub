@@ -11,6 +11,7 @@
     <!-- 부트스트랩 CSS 링크 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
+    <script src="../assets/js/darkMode.js"></script>
 </head>
 
 <body>
@@ -30,18 +31,26 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="../pages/index.php">메인</a>
+                <a href="../pages/index.php" class="nav-link active" data-title="홈">
+                    <i class="fas fa-home"></i> <span class="menu-text">홈</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+                <a class="nav-link " href="../pages/games.php">
+                    <i class="fas fa-gamepad"></i> 게임 목록
+                </a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">
+                        <i class="fas fa-user"></i> 마이페이지
+                    </a>
                 </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">설정</a>
+                <a class="nav-link" href="../pages/settings.php">
+                    <i class="fas fa-cogs"></i> 설정
+                </a>
             </li>
         </ul>
     </div>

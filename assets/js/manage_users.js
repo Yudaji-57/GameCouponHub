@@ -8,7 +8,7 @@ const usersPerPage = 10;
 
 // 유저 목록 불러오기
 function fetchUserList() {
-    fetch(`/backend/admin/manage_users_data.php?page=${currentPage}&limit=${usersPerPage}`)
+    fetch(`../backend/admin/manage_users_data.php?page=${currentPage}&limit=${usersPerPage}`)
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {

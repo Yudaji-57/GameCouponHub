@@ -1,27 +1,25 @@
 <!-- /GameCouponHub/pages/settings.php -->
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>설정</title>
     <link rel="stylesheet" href="../assets/css/user_common.css">
+    <link rel="stylesheet" href="../assets/css/mypage.css">
     <link rel="stylesheet" href="../assets/css/common.css">
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <!-- 부트스트랩 CSS -->
+    <!-- 부트스트랩 CSS 링크 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../assets/js/common.js"></script>
 </head>
 
 <body>
     <?php
-    session_start(); // 세션 시작
-    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
+    session_start();
+    $isLoggedIn = isset($_SESSION['user_id']);
     $rootPath = "/volume1/web/GameCouponHub";
-
-    // 헤더
     include $rootPath . "/includes/header.php";
     ?>
 
@@ -32,70 +30,84 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="../pages/index.php">메인</a>
+                <a href="../pages/index.php" class="nav-link " data-title="홈">
+                    <i class="fas fa-home"></i> <span class="menu-text">홈</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+                <a class="nav-link " href="../pages/games.php">
+                    <i class="fas fa-gamepad"></i> 게임 목록
+                </a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                    <a class="nav-link " href="#" onclick="navigateTo('../pages/mypage.php')">
+                        <i class="fas fa-user"></i> 마이페이지
+                    </a>
                 </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link active" href="../pages/settings.php">설정</a>
+                <a class="nav-link active" href="../pages/settings.php">
+                    <i class="fas fa-cogs"></i> 설정
+                </a>
             </li>
         </ul>
     </div>
 
     <main class="content container mt-4">
-        <h2>설정</h2>
-        <p>사이트 내 설정을 관리하세요.</p>
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">다크 모드 설정</h5>
-                <p class="card-text">사이트의 테마를 변경할 수 있습니다.</p>
-                <button class="btn btn-primary" id="toggleDarkMode">다크 모드 활성화</button>
+        <h2 class="mb-3">설정</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">다크 모드 설정</h5>
+                        <p class="card-text">사이트의 테마를 변경할 수 있습니다.</p>
+                        <button class="btn btn-primary w-100" id="toggleDarkMode">
+                            <i class="fas fa-moon"></i> 다크 모드 활성화
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="card mt-3">
-            <div class="card-body">
-                <h5 class="card-title">알림 설정</h5>
-                <p class="card-text">쿠폰 알림 및 사이트 공지 수신 설정</p>
-                <button class="btn btn-primary" id="toggleNotifications">알림 설정 변경</button>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">알림 설정</h5>
+                        <p class="card-text">쿠폰 알림 및 사이트 공지 수신 설정</p>
+                        <button class="btn btn-primary w-100" id="toggleNotifications">
+                            <i class="fas fa-bell"></i> 알림 설정 변경
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <?php include $rootPath . "/includes/footer.php"; ?>
 
-    <!-- 부트스트랩 JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="/assets/js/user_common.js"></script>
+    <script src="../assets/js/user_common.js"></script>
     <script src="../assets/js/siteTitleAndFavicon.js"></script>
+    <script src="../assets/js/darkMode.js"></script>
 
     <script>
+        // 로그인 상태에 따라 이동
         function navigateTo(url) {
             <?php if (!$isLoggedIn): ?>
                 alert("로그인 후 이용할 수 있습니다.");
-                window.location.href = "../auth/login.php";
+                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
             <?php else: ?>
-                window.location.href = url;
+                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
             <?php endif; ?>
-        }
+        };
 
         document.title = "GameCouponHub - 설정";
 
-        // 다크 모드 토글 기능
         document.getElementById("toggleDarkMode").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
             alert("다크 모드가 변경되었습니다.");
         });
 
-        // 알림 설정 변경 (더미 기능)
         document.getElementById("toggleNotifications").addEventListener("click", function() {
             alert("알림 설정이 변경되었습니다.");
         });

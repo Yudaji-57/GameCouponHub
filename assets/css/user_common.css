@@ -10,6 +10,58 @@
     top: 0;
     left: 0;
     transition: all 0.3s ease;
+    overflow: hidden; /* 내용이 넘치지 않도록 설정 */
+}
+
+/* 사이드바 항목 숨기기 */
+.sidebar.collapsed .nav-item {
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* 사이드바 링크 스타일 (텍스트 숨김) */
+.sidebar.collapsed .nav-link {
+    font-size: 0; /* 텍스트 숨김 */
+    padding: 10px 12px;
+}
+
+/* 아이콘을 유지하고 텍스트 숨김 */
+.sidebar.collapsed .nav-link::before {
+    font-size: 18px; /* 아이콘 크기 설정 */
+}
+
+/* 사이드바 항목 표시 */
+.sidebar:not(.collapsed) .nav-item {
+    opacity: 1;
+    visibility: visible; /* 보이도록 설정 */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* 부드럽게 나타나도록 */
+}
+
+/* 사이드바 링크 활성화 및 호버 스타일 */
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* 툴팁 스타일 (접었을 때 텍스트 대신 툴팁 표시) */
+.sidebar.collapsed .nav-link::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* 사이드바 아이템 호버 시 툴팁 표시 */
+.sidebar.collapsed .nav-link:hover::after {
+    opacity: 1;
 }
 
 /* 리스트 스타일 제거 (점 없애기) */
@@ -21,7 +73,7 @@
 
 /* 사이드바 닫힘 상태 */
 .sidebar.collapsed {
-    width: 60px;
+    width: 80px;
 }
 
 /* 사이드바 항목 */
@@ -34,12 +86,6 @@
     color: white;
     font-size: 18px;
     text-decoration: none;
-}
-
-/* 사이드바 링크 활성화 및 호버 스타일 */
-.sidebar .nav-link.active, .sidebar .nav-link:hover {
-    background-color: #007bff;
-    color: white;
 }
 
 /* 사이드바 토글 버튼 */

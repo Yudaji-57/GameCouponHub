@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (userId) {
         // 유저 정보 요청
-        fetch(`/backend/admin/get_user.php?user_id=${encodeURIComponent(userId)}`)
+        fetch(`../backend/admin/get_user.php?user_id=${encodeURIComponent(userId)}`)
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // 서버로 수정된 유저 정보 전송
-        fetch('/backend/admin/edit_user.php', {
+        fetch('../backend/admin/edit_user.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedUser)

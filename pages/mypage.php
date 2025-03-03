@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/common.css">
-    <link rel="stylesheet" href="../assets/css/user_common.css">
     <link rel="stylesheet" href="../assets/css/mypage.css">
+    <link rel="stylesheet" href="../assets/css/user_common.css"> <!-- 사이트 공통 CSS 파일 -->
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <!-- 부트스트랩 CSS 링크 -->
@@ -14,6 +14,8 @@
     <!-- 부트스트랩 JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/darkMode.js"></script>
 </head>
 
 <body>
@@ -83,18 +85,26 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="../pages/index.php">메인</a>
+                <a href="#" class="nav-link " data-title="홈">
+                    <i class="fas fa-home"></i> <span class="menu-text">홈</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+                <a class="nav-link " href="../pages/games.php">
+                    <i class="fas fa-gamepad"></i> 게임 목록
+                </a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                    <a class="nav-link active" href="#" onclick="navigateTo('../pages/mypage.php')">
+                        <i class="fas fa-user"></i> 마이페이지
+                    </a>
                 </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">설정</a>
+                <a class="nav-link" href="../pages/settings.php">
+                    <i class="fas fa-cogs"></i> 설정
+                </a>
             </li>
         </ul>
     </div>

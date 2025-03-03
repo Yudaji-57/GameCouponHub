@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // 쿠폰 데이터 가져오기
-    fetch('/backend/admin/coupons_data.php')
+    fetch('../backend/admin/coupons_data.php')
         .then(response => response.json())
         .then(data => {
             if (!data || !Array.isArray(data.coupons)) {

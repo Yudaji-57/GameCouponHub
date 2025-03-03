@@ -5,14 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 - GameCouponHub</title>
-
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <!-- 부트스트랩 CSS 링크 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
+    <link rel="stylesheet" href="../assets/css/common.css"> <!-- 전체 공통 CSS 파일 -->
     <link rel="stylesheet" href="../assets/css/auth.css">
+    <script src="../assets/js/common.js"></script>
+
 </head>
 
 <body>
@@ -33,23 +33,29 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="../pages/index.php">메인</a>
+                <a href="../pages/index.php" class="nav-link" data-title="홈">
+                    <i class="fas fa-home"></i> <span class="menu-text">홈</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+                <a class="nav-link" href="../pages/games.php">
+                    <i class="fas fa-gamepad"></i> 게임 목록
+                </a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">
+                        <i class="fas fa-user"></i> 마이페이지
+                    </a>
                 </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">설정</a>
+                <a class="nav-link" href="../pages/settings.php">
+                    <i class="fas fa-cogs"></i> 설정
+                </a>
             </li>
         </ul>
     </div>
-
-    
 
     <div class="container mt-4">
         <div class="row justify-content-center">

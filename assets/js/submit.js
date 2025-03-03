@@ -44,7 +44,7 @@ formElement.addEventListener("submit", function (event) {
     formData.append("user_id", userId);
     formData.append("coupon_type", couponType); // 쿠폰 유형 추가
 
-    fetch("/backend/routes/submit_coupon.php", {
+    fetch("../backend/routes/submit_coupon.php", {
         method: "POST",
         body: formData
     })

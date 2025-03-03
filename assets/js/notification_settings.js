@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const push_notifications = document.getElementById("push_notifications").checked ? 1 : 0;
 
         // AJAX 요청을 통해 백엔드에 알림 설정 변경 요청
-        fetch('/backend/notification_settings.php', {
+        fetch('../backend/notification_settings.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 대시보드</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/admin_common.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
@@ -88,6 +87,10 @@
 
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/darkMode.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+    <script>
+        document.title = "GameCouponHub - 관리자페이지";
+    </script>
 </body>
 
 </html>

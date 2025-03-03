@@ -1,16 +1,36 @@
 /* /assets/css/mypage.css */
 
+/* 사이드바 스타일 */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40;
+    z-index: 1000; /* 사이드바가 콘텐츠 뒤로 가는 걸 방지 */
+}
+
 /* 메인 콘텐츠 영역 */
 .content {
-    margin-left: 280px;
+    position: relative;
+    margin-left: 270px;
     margin-top: 20px;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    z-index: 1; /* 콘텐츠를 사이드바 위로 올리지 않도록 낮은 값 설정 */
+    background-color: #f8f9fa; /* 배경색 추가하여 겹치는 현상 방지 */
 }
 
 /* 카드 스타일 개선 */
 .card {
+    position: relative;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    transition: width 0.3s ease, margin 0.3s ease;
+    z-index: 2; /* 카드가 항상 콘텐츠 위에 있도록 설정 */
+    background-color: white;
 }
 
 /* 카드 헤더 */
@@ -42,16 +62,7 @@
     border-radius: 5px;
 }
 
-.list-group-item .badge {
-    font-size: 0.9rem;
-    background-color: #dc3545;
-}
-
-.list-group-item button {
-    margin-left: 10px;
-}
-
-/* 내 정보 수정 버튼 */
+/* 버튼 스타일 */
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
@@ -62,7 +73,6 @@
     border-color: #004085;
 }
 
-/* 로그아웃 버튼 */
 .btn-danger {
     background-color: #dc3545;
     border-color: #dc3545;
@@ -73,43 +83,32 @@
     border-color: #bd2130;
 }
 
-/* 사이드바 스타일 */
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #343a40;
-    padding-top: 20px;
-    padding-left: 10px;
-}
-
-#sidebar .nav-item {
-    padding: 10px 0;
-}
-
-#sidebar .nav-link {
-    color: #fff;
-    font-size: 1rem;
-}
-
-#sidebar .nav-link.active {
-    background-color: #007bff;
-}
-
-#sidebar .nav-link:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-/* 작은 화면에서 사이드바 숨기기 */
-@media (max-width: 768px) {
-    #sidebar {
-        display: none;
+/* 반응형 스타일 */
+@media (max-width: 992px) {
+    .content {
+        margin-left: 200px;
     }
+}
 
+@media (max-width: 768px) {
     .content {
         margin-left: 0;
+        padding: 15px;
+    }
+
+    .card {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .content {
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
     }
 }

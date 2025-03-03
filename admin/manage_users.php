@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사용자 관리</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/admin_common.css">
     <link rel="stylesheet" href="../assets/css/manage_users.css">
@@ -65,7 +64,10 @@
         <!-- 스크립트 중복 확인 -->
         <script src="../assets/js/manage_users.js"></script> <!-- 한 번만 -->
         <script src="../assets/js/darkMode.js"></script>
-
+        <script src="../assets/js/siteTitleAndFavicon.js"></script>
+        <script>
+        document.title = "GameCouponHub - 유저대시보드";
+        </script>
 </body>
 
 </html>

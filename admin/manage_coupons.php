@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쿠폰 관리</title>
-    <script src="/assets/js/manage_coupons.js"></script>
+    <script src="../assets/js/manage_coupons.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/admin_common.css">
     <link rel="stylesheet" href="../assets/css/manage_coupons.css">
@@ -66,6 +65,10 @@
         </div>
     </div>
     <script src="../assets/js/darkMode.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+    <script>
+        document.title = "GameCouponHub - 쿠폰관리";
+    </script>
 </body>
 
 </html>

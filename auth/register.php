@@ -15,6 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/terms_privacy.js"></script>
+    <script src="../assets/js/common.js"></script>
+
 </head>
 
 <body>
@@ -34,18 +36,26 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="../pages/index.php">메인</a>
+                <a href="../pages/index.php" class="nav-link" data-title="홈">
+                    <i class="fas fa-home"></i> <span class="menu-text">홈</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+                <a class="nav-link" href="../pages/games.php">
+                    <i class="fas fa-gamepad"></i> 게임 목록
+                </a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">
+                        <i class="fas fa-user"></i> 마이페이지
+                    </a>
                 </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">설정</a>
+                <a class="nav-link" href="../pages/settings.php">
+                    <i class="fas fa-cogs"></i> 설정
+                </a>
             </li>
         </ul>
     </div>

@@ -8,42 +8,47 @@
     <link rel="stylesheet" href="../assets/css/user_common.css">
     <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="../assets/css/point_history.css">
-    <title>포인트 사용 내역</title>
+    <!-- Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- 부트스트랩 CSS 링크 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/darkMode.js"></script>
 </head>
 
 <body>
-<?php
-session_start();
-$isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
+    <?php
+    session_start();
+    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
 
-if (!$isLoggedIn) {
-    header("Location: ../auth/login.php");
-    exit();
-}
+    if (!$isLoggedIn) {
+        header("Location: ../auth/login.php");
+        exit();
+    }
 
-$userId = $_SESSION['user_id']; // 로그인한 사용자의 ID
+    $userId = $_SESSION['user_id']; // 로그인한 사용자의 ID
 
-// 데이터베이스 연결
-$rootPath = "/volume1/web/GameCouponHub";
-include $rootPath . "/includes/header.php";
-include $rootPath . "/backend/config/database.php";
+    // 데이터베이스 연결
+    $rootPath = "/volume1/web/GameCouponHub";
+    include $rootPath . "/includes/header.php";
+    include $rootPath . "/backend/config/database.php";
 
-// 사용자 포인트 사용 내역을 가져오기 위한 쿼리
-$stmt = $pdo->prepare("
+    // 사용자 포인트 사용 내역을 가져오기 위한 쿼리
+    $stmt = $pdo->prepare("
     SELECT ph.history_id, ph.amount, ph.description, ph.date
     FROM point_history ph
     WHERE ph.user_id = :userId
     ORDER BY ph.date DESC
 ");
-$stmt->bindParam(':userId', $userId, PDO::PARAM_STR);
-$stmt->execute();
-$historyData = $stmt->fetchAll();
+    $stmt->bindParam(':userId', $userId, PDO::PARAM_STR);
+    $stmt->execute();
+    $historyData = $stmt->fetchAll();
 
-if (!$historyData) {
-    $message = "포인트 사용 내역이 없습니다.";
-}
-?>
-    
+    if (!$historyData) {
+        $message = "포인트 사용 내역이 없습니다.";
+    }
+    ?>
+
 
     <!-- 사이드바 -->
     <div id="sidebar" class="sidebar">
@@ -52,52 +57,60 @@ if (!$historyData) {
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="../pages/index.php">메인</a>
+                <a href="../pages/index.php" class="nav-link " data-title="홈">
+                    <i class="fas fa-home"></i> <span class="menu-text">홈</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">게임 목록</a>
+                <a class="nav-link " href="../pages/games.php">
+                    <i class="fas fa-gamepad"></i> 게임 목록
+                </a>
             </li>
             <?php if ($isLoggedIn): ?>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" onclick="navigateTo('../pages/mypage.php')">마이페이지</a>
+                    <a class="nav-link active" href="#" onclick="navigateTo('../pages/mypage.php')">
+                        <i class="fas fa-user"></i> 마이페이지
+                    </a>
                 </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">설정</a>
+                <a class="nav-link " href="../pages/settings.php">
+                    <i class="fas fa-cogs"></i> 설정
+                </a>
             </li>
         </ul>
     </div>
 
     <main class="container mt-4">
-    <h2>포인트 사용 내역</h2>
+        <h2>포인트 사용 내역</h2>
 
-    <?php if (isset($message)): ?>
-        <div class="alert alert-info">
-            <?= htmlspecialchars($message) ?>
-        </div>
-    <?php else: ?>
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>날짜</th>
-                        <th>내역</th>
-                        <th>사용 포인트</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($historyData as $history): ?>
+        <?php if (isset($message)): ?>
+            <div class="alert alert-info">
+                <?= htmlspecialchars($message) ?>
+            </div>
+        <?php else: ?>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td><?= htmlspecialchars($history['date']) ?></td>
-                            <td><?= htmlspecialchars($history['description']) ?></td>
-                            <td><?= number_format($history['amount']) ?>P</td>
+                            <th>날짜</th>
+                            <th>내역</th>
+                            <th>사용 포인트</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    <?php endif; ?>
-</main>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($historyData as $history): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($history['date']) ?></td>
+                                <td><?= htmlspecialchars($history['description']) ?></td>
+                                <td><?= number_format($history['amount']) ?>P</td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php endif; ?>
+    </main>
 
     <?php include $rootPath . "/includes/footer.php"; ?>
     <script>

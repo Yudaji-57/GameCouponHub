@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>유저 정보 수정</title>
     <link rel="stylesheet" href="../assets/css/admin_common.css">
     <link rel="stylesheet" href="../assets/css/edit_user.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -60,6 +59,10 @@
 
     <script src="../assets/js/edit_user.js"></script>
     <script src="../assets/js/darkMode.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+    <script>
+        document.title = "GameCouponHub - 유저관리";
+    </script>
 </body>
 
 </html>

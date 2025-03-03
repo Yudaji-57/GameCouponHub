@@ -124,7 +124,7 @@ footer a:hover {
 
 /* 사이드바 닫힘 상태 */
 .sidebar.collapsed {
-    width: 60px;
+    width: 80px;
 }
 
 /* 사이드바 항목 */

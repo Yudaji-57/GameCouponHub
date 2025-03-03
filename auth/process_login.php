@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 로그인 성공
             // 동적으로 세션에 사용자 정보를 저장
             foreach ($user as $key => $value) {
-                $_SESSION[$key] = $value;
+                $_SESSION[$key] = $value;  // 모든 사용자 정보가 세션에 저장됨
             }
 
             // 로그인 시간을 업데이트

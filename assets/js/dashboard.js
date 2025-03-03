@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('/backend/admin/dashboard_data.php', { cache: "no-store" })
+    fetch('../backend/admin/dashboard_data.php', { cache: "no-store" })
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {

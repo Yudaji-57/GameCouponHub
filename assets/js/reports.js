@@ -1,9 +1,23 @@
 // 제보 목록을 불러오는 코드
-fetch('/backend/admin/reports_data.php')
+fetch('../backend/admin/reports_data.php')
     .then(response => response.json())
     .then(data => {
         const reportTableBody = document.querySelector("#reportTable tbody");
+
+        // 중복된 index 값 제거 (Set 사용)
+        const uniqueReports = [];
+        const seenIndexes = new Set();
+
         data.reports.forEach(report => {
+            // index가 이미 처리된 데이터인지 확인
+            if (!seenIndexes.has(report.index)) {
+                seenIndexes.add(report.index);
+                uniqueReports.push(report);
+            }
+        });
+
+        // 중복이 제거된 uniqueReports 배열을 사용하여 테이블 채우기
+        uniqueReports.forEach(report => {
             const statusText = getStatusText(report.approval_status);  // 상태 텍스트 변환
 
             const row = document.createElement("tr");
@@ -57,7 +71,7 @@ fetch('/backend/admin/reports_data.php')
                     formData.append('report_id', report.index);
 
                     // 폼 데이터 서버로 전송
-                    fetch('/backend/admin/coupon_add_and_delete_report.php', {
+                    fetch('../backend/admin/coupon_add_and_delete_report.php', {
                         method: 'POST',
                         body: formData
                     })
@@ -88,7 +102,7 @@ function updateReportApprovalStatus(index, approvalStatus) {
     console.log("Report ID:", index);  // index 값 확인
     console.log("Approval Status:", approvalStatus);
 
-    fetch('/backend/admin/update_report_status.php', {
+    fetch('../backend/admin/update_report_status.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

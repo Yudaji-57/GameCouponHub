@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쿠폰 제보 리스트</title>
-    <!-- 쿠폰 제보 리스트 페이지에 필요한 JS 파일 선언 -->
-    <script src="/assets/js/reports.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/admin_common.css">
     <!-- 쿠폰 제보 리스트 페이지 CSS -->
@@ -85,6 +82,10 @@
 
     <script src="../assets/js/reports.js"></script>
     <script src="../assets/js/darkMode.js"></script>
+    <script src="../assets/js/siteTitleAndFavicon.js"></script>
+    <script>
+        document.title = "GameCouponHub - 쿠폰제보현항";
+    </script>
 </body>
 
 </html>
