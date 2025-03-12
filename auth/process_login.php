@@ -35,10 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 비밀번호 확인 (비밀번호는 해시값으로 저장됨)
         if (password_verify($password, $user['password'])) {
             // 로그인 성공
-            // 동적으로 세션에 사용자 정보를 저장
-            foreach ($user as $key => $value) {
-                $_SESSION[$key] = $value;  // 모든 사용자 정보가 세션에 저장됨
-            }
+            // 세션에 사용자 정보 저장
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_name'] = $user['user_name'];
+            $_SESSION['role'] = $user['user_role'];  // 'role' 컬럼을 세션에 저장
+            $_SESSION['is_admin'] = ($user['user_role'] === 'admin');  // 'admin' 역할을 가진 사용자는 관리자 권한 부여
 
             // 로그인 시간을 업데이트
             $updateSql = "UPDATE users SET last_login = NOW() WHERE user_id = :userId"; // user_id로 변경

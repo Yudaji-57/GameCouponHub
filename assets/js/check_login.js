@@ -51,3 +51,4 @@ async function checkLoginStatus() {
 
 // 로그인 상태 체크 실행
 document.addEventListener("DOMContentLoaded", checkLoginStatus);
+
