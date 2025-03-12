@@ -170,6 +170,15 @@ footer a:hover {
     margin-left: 70px;
 }
 
+#dynamicMenu {
+    display: inline-block; /* 동적으로 추가된 메뉴가 한 줄로 나열되도록 설정 */
+}
+
+#dynamicMenu a {
+    display: inline-block; /* 각 메뉴 항목을 한 줄에 나열 */
+    margin-right: 10px; /* 항목 간 간격 조정 */
+}
+
 /* 모바일 대응: 사이드바 크기 조정 */
 @media (max-width: 768px) {
     .sidebar {

@@ -16,18 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/terms_privacy.js"></script>
     <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/loadLayout.js"></script>
 
 </head>
 
 <body>
-    <?php
-    session_start(); // 세션 시작
-    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
-    $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
-
-    // 헤더
-    include $rootPath . "/includes/header.php";
-    ?>
+    <div id="header"></div> <!-- 헤더 로드 -->
 
     <!-- 사이드바 -->
     <div id="sidebar" class="sidebar">
@@ -36,24 +30,17 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="../pages/index.php" class="nav-link" data-title="홈">
+                <a href="../pages/index.html" class="nav-link" data-title="홈">
                     <i class="fas fa-home"></i> <span class="menu-text">홈</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">
+                <a class="nav-link" href="../pages/games.html">
                     <i class="fas fa-gamepad"></i> 게임 목록
                 </a>
             </li>
-            <?php if ($isLoggedIn): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">
-                        <i class="fas fa-user"></i> 마이페이지
-                    </a>
-                </li>
-            <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">
+                <a class="nav-link" href="../pages/settings.html">
                     <i class="fas fa-cogs"></i> 설정
                 </a>
             </li>
@@ -67,15 +54,26 @@
                     <h2 class="text-center mb-4">회원가입</h2>
 
                     <!-- 오류 메시지 출력 영역 -->
-                    <?php
-                    session_start();
-                    if (isset($_SESSION['error_message'])) {
-                        echo '<div class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
-                        unset($_SESSION['error_message']);
-                    }
-                    ?>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const errorMessage = localStorage.getItem("errorMessage");
+                        
+                            if (errorMessage) {
+                                // 오류 메시지를 표시
+                                const alertDiv = document.createElement('div');
+                                alertDiv.className = 'alert alert-danger';
+                                alertDiv.textContent = errorMessage;
+                        
+                                // 페이지에 메시지 추가
+                                document.body.appendChild(alertDiv);
+                        
+                                // 메시지를 표시 후 localStorage에서 삭제
+                                localStorage.removeItem("errorMessage");
+                            }
+                        });
+                    </script>                        
 
-                    <form action="../auth/process_register.php" method="post" onsubmit="return validateForm()">
+                    <form action="../auth/process_register.html" method="post" onsubmit="return validateForm()">
                         <div class="mb-3">
                             <label for="username" class="form-label">아이디</label>
                             <input type="text" id="username" name="username" class="form-control" required>
@@ -193,7 +191,7 @@
                     </form>
 
                     <div class="text-center mt-3">
-                        <a href="../auth/login.php">로그인</a>
+                        <a href="../auth/login.html">로그인</a>
                     </div>
                 </div>
             </div>
@@ -201,20 +199,11 @@
     </div>
 
     <!-- 푸터 포함 -->
-    <?php
-    include $rootPath . "/includes/footer.php";
-    ?>
+    <div id="footer"></div> <!-- 푸터 로드 -->
 
 
     <script>
-        function navigateTo(url) {
-            <?php if (!$isLoggedIn): ?>
-                alert("로그인 후 이용할 수 있습니다.");
-                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
-            <?php else: ?>
-                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
-            <?php endif; ?>
-        }
+
 
         function validateForm() {
             // 약관 동의 및 개인정보 처리방침 체크 확인

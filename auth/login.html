@@ -12,18 +12,12 @@
     <link rel="stylesheet" href="../assets/css/common.css"> <!-- 전체 공통 CSS 파일 -->
     <link rel="stylesheet" href="../assets/css/auth.css">
     <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/loadLayout.js"></script>
 
 </head>
 
 <body>
-    <?php
-    session_start(); // 세션 시작
-    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
-    $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
-
-    // 헤더
-    include $rootPath . "/includes/header.php";
-    ?>
+    <div id="header"></div> <!-- 헤더 로드 -->
 
 
     <!-- 사이드바 -->
@@ -33,24 +27,17 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="../pages/index.php" class="nav-link" data-title="홈">
+                <a href="../pages/index.html" class="nav-link" data-title="홈">
                     <i class="fas fa-home"></i> <span class="menu-text">홈</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/games.php">
+                <a class="nav-link" href="../pages/games.html">
                     <i class="fas fa-gamepad"></i> 게임 목록
                 </a>
             </li>
-            <?php if ($isLoggedIn): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">
-                        <i class="fas fa-user"></i> 마이페이지
-                    </a>
-                </li>
-            <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">
+                <a class="nav-link" href="../pages/settings.html">
                     <i class="fas fa-cogs"></i> 설정
                 </a>
             </li>
@@ -64,13 +51,26 @@
                     <h2 class="text-center mb-4">로그인</h2>
 
                     <!-- 오류 메시지 출력 영역 -->
-                    <?php
-                    session_start();
-                    if (isset($_SESSION['error_message'])) {
-                        echo '<div class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
-                        unset($_SESSION['error_message']);
-                    }
-                    ?>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            // localStorage에서 오류 메시지 가져오기
+                            const errorMessage = localStorage.getItem("errorMessage");
+
+                            // 오류 메시지가 있을 경우 화면에 출력
+                            if (errorMessage) {
+                                // 오류 메시지 출력 div 생성
+                                const alertDiv = document.createElement('div');
+                                alertDiv.className = 'alert alert-danger';
+                                alertDiv.textContent = errorMessage;
+
+                                // 출력 영역에 추가
+                                document.body.appendChild(alertDiv);
+
+                                // 메시지를 출력한 후 localStorage에서 삭제
+                                localStorage.removeItem("errorMessage");
+                            }
+                        });
+                    </script>
 
                     <form action="../auth/process_login.php" method="post">
                         <div class="mb-3">
@@ -85,8 +85,8 @@
                     </form>
 
                     <div class="text-center mt-3">
-                        <a href="../auth/register.php" class="btn btn-outline-success mx-2">회원가입</a>
-                        <a href="../auth/forgot_password.php" class="btn btn-outline-info mx-2">비밀번호 찾기</a>
+                        <a href="../auth/register.html" class="btn btn-outline-success mx-2">회원가입</a>
+                        <a href="../auth/forgot_password.html" class="btn btn-outline-info mx-2">비밀번호 찾기</a>
                     </div>
 
 
@@ -113,24 +113,13 @@
     </div>
 
     <!-- 푸터 포함 -->
-    <?php
-    include $rootPath . "/includes/footer.php";
-    ?>
+    <div id="footer"></div> <!-- 푸터 로드 -->
 
     <!-- 부트스트랩 JS, Popper.js 링크 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="../assets/js/auth.js"></script>
     <script>
-        function navigateTo(url) {
-            <?php if (!$isLoggedIn): ?>
-                alert("로그인 후 이용할 수 있습니다.");
-                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
-            <?php else: ?>
-                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
-            <?php endif; ?>
-        }
-
         document.title = "GameCouponHub - 로그인"; // 페이지 제목 설정
     </script>
 </body>

@@ -12,17 +12,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/common.css"> <!-- 공통 CSS 파일 -->
     <script src="../assets/js/darkMode.js"></script>
+    <script src="../assets/js/loadLayout.js"></script>
+    <script src="../assets/js/check_login.js"></script>
+
+    
 </head>
 
 <body>
-    <?php
-    session_start(); // 세션 시작
-    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
-    $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
 
-    // 헤더
-    include $rootPath . "/includes/header.php";
-    ?>
+    <div id="header"></div> <!-- 헤더 로드 -->
 
     <!-- 사이드바 -->
     <div id="sidebar" class="sidebar">
@@ -31,24 +29,17 @@
         </button>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="../pages/index.php" class="nav-link active" data-title="홈">
+                <a href="../pages/index.html" class="nav-link active">
                     <i class="fas fa-home"></i> <span class="menu-text">홈</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="../pages/games.php">
+                <a class="nav-link" href="../pages/games.html">
                     <i class="fas fa-gamepad"></i> 게임 목록
                 </a>
             </li>
-            <?php if ($isLoggedIn): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="navigateTo('../pages/mypage.php')">
-                        <i class="fas fa-user"></i> 마이페이지
-                    </a>
-                </li>
-            <?php endif; ?>
             <li class="nav-item">
-                <a class="nav-link" href="../pages/settings.php">
+                <a class="nav-link" href="../pages/settings.html">
                     <i class="fas fa-cogs"></i> 설정
                 </a>
             </li>
@@ -67,10 +58,7 @@
         </div>
     </div>
 
-    <?php
-    // 푸터
-    include $rootPath . "/includes/footer.php";
-    ?>
+    <div id="footer"></div> <!-- 푸터 로드 -->
 
     <!-- 부트스트랩 JS, Popper.js 링크 -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -82,15 +70,6 @@
     <!-- 페이지별 JS 파일 링크 -->
     <script src="../assets/js/index.js"></script>
     <script>
-        // navigateTo 함수는 PHP에서 전달된 로그인 상태에 따라 다르게 동작
-        function navigateTo(url) {
-            <?php if (!$isLoggedIn): ?>
-                alert("로그인 후 이용할 수 있습니다.");
-                window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
-            <?php else: ?>
-                window.location.href = url; // 로그인된 경우 해당 페이지로 이동
-            <?php endif; ?>
-        }
 
         // 페이지마다 타이틀을 설정하는 코드
         document.title = "GameCouponHub - 메인페이지"; // 이 부분을 각 페이지별로 설정

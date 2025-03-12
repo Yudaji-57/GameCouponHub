@@ -1,5 +1,5 @@
-Options +Includes
-AddType text/html .html
+# .html에서도 PHP 코드 실행 가능하도록 설정
+AddType application/x-httpd-php .html .htm
 AddHandler server-parsed .html
 
 # 기본 문서를 index.php로 설정
@@ -9,7 +9,6 @@ DirectoryIndex index.php index.html
 Options -Indexes
 
 # 올바른 MIME 타입 설정
-AddType text/html .html .php
 AddType text/css .css
 AddType text/javascript .js
 AddType application/json .json

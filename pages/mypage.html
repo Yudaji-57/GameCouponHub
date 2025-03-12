@@ -286,15 +286,18 @@
             alert('쿠폰 코드가 복사되었습니다.');
         }
 
-        // 로그인 상태에 따라 이동
+        // 로그인 상태 확인 후 이동
         function navigateTo(url) {
-            <?php if (!$isLoggedIn): ?>
+            const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>; // PHP 값을 JavaScript로 변환
+
+            if (!isLoggedIn) {
                 alert("로그인 후 이용할 수 있습니다.");
                 window.location.href = "../auth/login.php"; // 로그인 페이지로 리다이렉트
-            <?php else: ?>
+            } else {
                 window.location.href = url; // 로그인된 경우 해당 페이지로 이동
-            <?php endif; ?>
-        };
+            }
+        }
+
 
         document.title = "GameCouponHub - 마이페이지";
     </script>
