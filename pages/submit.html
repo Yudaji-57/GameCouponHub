@@ -14,17 +14,11 @@
     <link rel="stylesheet" href="../assets/css/submit.css"> <!-- 추가적인 커스텀 스타일 -->
     <script src="../assets/js/submit.js" defer></script> <!-- submit.js: 쿠폰 제보 JS -->
     <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/loadLayout.js"></script>
+    <script src="../assets/js/check_login.js"></script>
 </head>
 
 <body>
-    <?php
-    session_start(); // 세션 시작
-    $isLoggedIn = isset($_SESSION['user_id']); // 로그인 여부 확인
-    $rootPath = "/volume1/web/GameCouponHub"; // 현재 파일 기준 상위 디렉토리 경로
-
-    // 헤더
-    include $rootPath . "/includes/header.php";
-    ?>
 
     <!-- 사이드바 -->
     <div id="sidebar" class="sidebar">
